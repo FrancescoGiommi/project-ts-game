@@ -1,0 +1,65 @@
+body {
+  font-family: "MedievalSharp", cursive !important;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.home-content {
+  height: 100vh;
+  width: 100vw; /* <-- aggiungi questa */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  background-image: url("/img/backgroundTower.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.home-content p {
+  font-size: 1.5rem;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.home-content h1 {
+  animation: fadeIn 1s ease-in;
+  color: white;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* link */
+.link {
+  text-decoration: none;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #e7b04e;
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Orbitron", sans-serif;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
