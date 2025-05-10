@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function HomePage() {
   return (
     <>
@@ -7,7 +9,9 @@ export default function HomePage() {
           Questo è un gioco narrativo in cui i personaggi incontrato una serie
           di sfide e avventure.
         </p>
-        <button className="btn btn-warning">Inizia</button>
+        <Link to="/playerName">
+          <button className="btn btn-warning">Inizia</button>
+        </Link>
       </div>
     </>
   );
