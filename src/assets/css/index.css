@@ -6,7 +6,7 @@ body {
 
 .home-content {
   height: 100vh;
-  width: 100vw; /* <-- aggiungi questa */
+  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -44,22 +44,47 @@ body {
 /* link */
 .link {
   text-decoration: none;
+  margin-left: 20px;
+  list-style: none;
+  color: #f0e6d2;
 }
 
 /* Navbar */
 .navbar {
-  background-color: #e7b04e;
-  color: #fff;
+  background-color: #3e3e3e;
+  color: white;
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: "Orbitron", sans-serif;
+  font-family: "MedievalSharp", cursive !important;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 .navbar-links {
-  list-style: none;
   display: flex;
   gap: 1.5rem;
+  margin-right: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+  color: white;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

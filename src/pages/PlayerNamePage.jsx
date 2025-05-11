@@ -1,13 +1,13 @@
 import { useRef } from "react";
 
 export default function PlayerNamePage() {
-  const playerNameRef = useRef<HTMLInputElement>(null);
+  const playerNameRef = useRef(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const playerName = playerNameRef.current?.value;
+    const playerName = playerNameRef.current.value.trim();
     if (playerName) {
-      console.log(playerName);
+      localStorage.setItem("playerName", playerName);
     }
   };
   return (

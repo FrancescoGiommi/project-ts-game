@@ -13,7 +13,7 @@ export default function Navbar() {
           <NavLink to="/">Home</NavLink>
         </li>
         {/* Statistiche */}
-        <li>
+        <li className="link">
           <NavLink to="/stats">Statistiche</NavLink>
         </li>
       </ul>
