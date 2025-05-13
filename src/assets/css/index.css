@@ -88,3 +88,62 @@ body {
     transform: translateY(0);
   }
 }
+
+.main-img {
+  background-image: url("/public/img/vecchio_libro.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.floor-title {
+  position: absolute;
+  top: 200px;
+  right: 420px;
+}
+
+.description {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 20px;
+  top: 550px;
+  font-size: 25px;
+}
+
+.subtitle {
+  position: absolute;
+  top: 400px;
+}
+
+.paths {
+  margin-top: 850px;
+}
+
+.img-paths {
+  width: 250px;
+  height: 150px;
+  border-radius: 8px;
+}
+
+.img-paths:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease in-out;
+}
+
+.paths-button {
+  background-color: #cfbb08;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "MedievalSharp", cursive !important;
+  font-size: 1.2rem;
+}
+
+.paths-button:hover {
+  background-color: #e1f016;
+  transition: transform 0.3s ease in-out;
+}
