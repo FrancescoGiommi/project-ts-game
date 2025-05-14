@@ -108,13 +108,13 @@ body {
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
   padding: 20px;
-  top: 550px;
+  top: 795px;
   font-size: 25px;
 }
 
 .subtitle {
   position: absolute;
-  top: 400px;
+  top: 200px;
 }
 
 .paths {
@@ -125,6 +125,13 @@ body {
   width: 250px;
   height: 150px;
   border-radius: 8px;
+}
+
+.valley {
+  position: absolute;
+  bottom: 500px;
+  width: 700px;
+  height: 450px;
 }
 
 .img-paths:hover {

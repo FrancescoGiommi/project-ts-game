@@ -19,8 +19,10 @@ export default function FloorPage() {
               <h2 className="fs-1 subtitle">{floors[0].name}</h2>
 
               {/* Descrizione */}
+              <img className="img-paths valley" src={floors[0].image} alt="" />
               <p className="description">
                 Benvenuto {playerName}! La tua arma è uno {weapons[0].name}.
+                <br />
                 Davanti a te si aprono tre sentieri, quale scegli?
               </p>
             </div>
