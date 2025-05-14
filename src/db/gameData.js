@@ -43,14 +43,17 @@ export const floors = [
       {
         id: "A",
         description: "Vai all'accampamento dei Goblin",
+        image: "/img/goblin.jpg",
       },
       {
         id: "B",
-        description: "Vai alla cripta",
+        description: "Vai alla Cripta",
+        image: "/img/cripta.jpg",
       },
       {
         id: "C",
-        description: "Vai al castello",
+        description: "Vai al Castello",
+        image: "/img/castello.jpg",
       },
     ],
   },
