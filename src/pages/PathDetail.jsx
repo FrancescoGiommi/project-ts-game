@@ -5,11 +5,11 @@ import CardPath from "../components/CardPath";
 export default function PathDetail({ path }) {
   const { id } = useParams();
 
-  const { weapons, enemies, floors } = gameData;
+  const { weapons, enemies, floors, paths } = gameData;
 
   const playerName = localStorage.getItem("playerName");
 
-  const pathData = floors[0].paths.find((path) => path.id === id);
+  const pathData = paths.find((path) => path.id === id);
 
   if (!pathData) {
     return <h1>Percorso non trovato</h1>;
@@ -38,7 +38,7 @@ export default function PathDetail({ path }) {
 
             <div className="d-flex flex-row justify-content-around paths">
               <div className="d-flex flex-row">
-                {pathData.paths.map((subPath, index) => (
+                {pathData.options.map((subPath, index) => (
                   <Link to={`/floor/${subPath}`} key={index}>
                     <CardPath
                       path={{

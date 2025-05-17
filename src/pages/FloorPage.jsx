@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import CardPath from "../components/CardPath.jsx";
 import { Link } from "react-router-dom";
 
-const { weapons, enemies, floors } = gameData;
+const { weapons, enemies, floors, paths } = gameData;
 
 export default function FloorPage() {
   const playerName = localStorage.getItem("playerName");
@@ -29,7 +29,7 @@ export default function FloorPage() {
 
             <div className="d-flex flex-row justify-content-around paths">
               <div className="d-flex flex-row">
-                {floors[0].paths.map((path) => (
+                {paths.map((path) => (
                   <Link to={`/floor/${path.id}`} key={path.id}>
                     <CardPath path={path} />
                   </Link>
