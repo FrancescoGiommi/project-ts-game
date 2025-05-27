@@ -121,13 +121,21 @@ body {
   margin-top: 850px;
 }
 
+.img-weapons {
+  width: 150px;
+  border-radius: 12px;
+  position: absolute;
+  top: 450px;
+  right: 600px;
+}
+
 .img-paths {
   width: 250px;
   height: 150px;
   border-radius: 8px;
 }
 
-.valley {
+.main-image {
   position: absolute;
   bottom: 500px;
   width: 700px;

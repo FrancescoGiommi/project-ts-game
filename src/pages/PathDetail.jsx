@@ -27,7 +27,7 @@ export default function PathDetail({ path }) {
 
               {/* Descrizione */}
               <img
-                className="img-paths valley"
+                className="img-paths main-image"
                 src={pathData.imagePath1}
                 alt=""
               />
@@ -38,12 +38,12 @@ export default function PathDetail({ path }) {
 
             <div className="d-flex flex-row justify-content-around paths">
               <div className="d-flex flex-row">
-                {pathData.options.map((subPath, index) => (
-                  <Link to={`/floor/${subPath}`} key={index}>
+                {pathData.options.map((path, index) => (
+                  <Link to={`/floor/${path.next}`} key={index}>
                     <CardPath
                       path={{
-                        description: subPath.description,
-                        image: subPath.image,
+                        description: path.description,
+                        image: path.image,
                       }}
                     />
                   </Link>

@@ -3,6 +3,7 @@ const weapons = [
     id: 1,
     name: "Spadone a due mani",
     damage: 1,
+    image: "/../img/spadone.jpg",
     rarity: "Comune",
     description: "Uno spadone pesante da impugnare a due mani.",
   },
@@ -49,11 +50,7 @@ export const paths = [
     title: "l'Insediamento dei Goblin",
     description: "Vai all'insediamento dei Goblin",
     image: "/img/goblin.jpg",
-    narration: `stai andando verso l'insediamento dei Goblin, ma lungo il
-                percorso ti trovi davanti ad un ponte di legno con sotto un
-                dirupo.
-                Le assi scricchiolano al vento, alcune sembrano pronte a cedere.
-                che cosa fai?`,
+    narration: `stai andando verso l'insediamento dei Goblin, ma lungo il percorso ti trovi davanti ad un ponte di legno con sotto un dirupo.\nLe assi scricchiolano al vento, alcune sembrano pronte a cedere. che cosa fai?`,
     imagePath1: "/img/ponte.jpg",
     options: [
       {
@@ -69,12 +66,41 @@ export const paths = [
         next: "C1",
       },
       {
-        id: "c",
+        id: "A3",
         image: "/img/valle_incantata.jpg",
         description: "torno indietro e prendo un altra strada",
         next: "floor-1",
       },
     ],
+  },
+  {
+    id: "B1",
+    title: "Il ponte cede",
+    description: "",
+    image: "/img/caduta.jpg",
+    narration: `Inizi a percorrere il ponte ma dopo qualche passo senti che inizia a cedere, preso dal panico inizi a correre per raggiungere la fine il prima possibile.\nNella corsa cedono gli assi e finisci per cadere di sotto.
+    `,
+    imagePath1: "",
+    next: "Sei Morto",
+    options: [],
+  },
+  {
+    id: "C1",
+    title: "Sentiero secondario",
+    description: "",
+    image: "/img/sentiero.jpg",
+    narration: `Segui il sentiero secondario che serpeggia tra gli alberi. L’atmosfera è tranquilla, ma senti come se qualcuno ti stesse osservando…`,
+    imagePath1: "",
+    options: [],
+  },
+  {
+    id: "floor-1",
+    title: "Ritorno alla scelta iniziale",
+    description: "",
+    image: "/img/valle_incantata.jpg",
+    narration: `Hai deciso di tornare indietro e prendere un'altra strada.`,
+    imagePath1: "",
+    options: [],
   },
   {
     id: "B",
