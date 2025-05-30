@@ -142,6 +142,25 @@ body {
   height: 450px;
 }
 
+.player-title {
+  position: absolute;
+  font-size: 30px;
+  top: 350px;
+  left: 600px;
+  border: 2px solid #cfbb08;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.player-name {
+  position: absolute;
+  margin-top: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 30px;
+  top: 400px;
+  left: 620px;
+}
+
 .img-paths:hover {
   transform: scale(1.05);
   transition: transform 0.3s ease in-out;

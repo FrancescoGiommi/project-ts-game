@@ -25,19 +25,22 @@ export default function PathDetail({ path }) {
             <div className="d-flex flex-column align-items-center justify-content-center text-center">
               <h3 className="fs-1 subtitle">{pathData.title}</h3>
 
+              <div className="player-detail">
+                <h3 className="player-title">Giocatore</h3>
+                <p className="player-name">{playerName}</p>
+              </div>
+
               {/* Descrizione */}
               <img
                 className="img-paths main-image"
                 src={pathData.imagePath1}
                 alt=""
               />
-              <p className="description">
-                {playerName} {pathData.narration}
-              </p>
+              <p className="description">{pathData.narration}</p>
             </div>
 
-            <div className="d-flex flex-row justify-content-around paths">
-              <div className="d-flex flex-row">
+            <div className=" paths">
+              <div className=" d-flex flex-row- justify-content-around">
                 {pathData.options.map((path, index) => (
                   <Link to={`/floor/${path.next}`} key={index}>
                     <CardPath

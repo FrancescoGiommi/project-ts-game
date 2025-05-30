@@ -40,8 +40,8 @@ export default function FloorPage() {
               </p>
             </div>
 
-            <div className="d-flex flex-row justify-content-around paths">
-              <div className="d-flex flex-row">
+            <div className="paths">
+              <div className="d-flex flex-row justify-content-around">
                 {rootPaths.map((path) => (
                   <Link to={`/floor/${path.id}`} key={path.id}>
                     <CardPath path={path} />
