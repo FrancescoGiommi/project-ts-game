@@ -1,11 +1,15 @@
+import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { gameData } from "../db/gameData";
 import CardPath from "../components/CardPath";
+import RestartModal from "../components/RestartModal";
 
 export default function PathDetail({ path }) {
   const { id } = useParams();
 
   const { weapons, enemies, floors, paths } = gameData;
+
+  const [restartModal, setRestarModal] = useState(false);
 
   const playerName = localStorage.getItem("playerName");
 
@@ -52,7 +56,23 @@ export default function PathDetail({ path }) {
                   </Link>
                 ))}
               </div>
+              {pathData.isDeath && (
+                <div className="d-flex justify-content-center mt-4">
+                  <button
+                    className="btn btn-danger death-button fs-1"
+                    onClick={() => setRestarModal(true)}
+                  >
+                    Sei Morto <i className="fa-solid fa-skull-crossbones"></i>
+                  </button>
+                </div>
+              )}
             </div>
+            {restartModal && (
+              <RestartModal
+                onOpen={() => setRestarModal(true)}
+                onClose={() => setRestarModal(false)}
+              />
+            )}
           </div>
         </div>
       </div>

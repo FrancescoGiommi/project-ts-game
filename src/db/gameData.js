@@ -46,6 +46,7 @@ export const floors = [
 
 export const paths = [
   {
+    //! Insediamento dei Goblin
     id: "A",
     title: "l'Insediamento dei Goblin",
     description: "Vai all'insediamento dei Goblin",
@@ -68,6 +69,7 @@ export const paths = [
     ],
   },
   {
+    //! Il ponte cede
     id: "A1-A",
     title: "Il ponte cede",
     description: "",
@@ -76,9 +78,11 @@ export const paths = [
     `,
     imagePath1: "/img/caduta.jpg",
     next: "Sei Morto",
+    isDeath: true,
     options: [],
   },
   {
+    //! Il sentiero secondario
     id: "A2-B",
     title: "Sentiero secondario",
     description: "",
@@ -102,6 +106,7 @@ export const paths = [
     ],
   },
   {
+    //! Arrivi all'insediamento
     id: "D",
     title: "Arrivi all'insediamento",
     description: "",
@@ -124,6 +129,70 @@ export const paths = [
     ],
   },
   {
+    //! Cerchi un entrata secondaria
+    id: "D2-B",
+    title: "Cerchi un entrata secondaria",
+    description: "",
+    image: "",
+    narration: `Ti muovi furtivamente tra i cespugli per non farti vedere dagli arcieri, quando improvvisamente dentro un cespuglio si apre una botola e cadi di sotto. Ti ritrovi in una sorta di caverna buia e vedi da lontano una statua illuminata dalla luce naturale, che cosa fai?`,
+    imagePath1: "/img/caverna.jpg",
+    options: [
+      {
+        id: "D1",
+        description: "Vai verso la statua",
+        image: "/img/statua_dea.jpg",
+        next: "D1-A",
+      },
+      {
+        id: "D2",
+        description: "Cerchi una via d'uscita",
+        image: "/img/uscita_caverna.jpg",
+        next: "D2-A",
+      },
+    ],
+  },
+  {
+    //! Vai verso la statua
+    id: "D1-A",
+    title: "Vai verso la statua",
+    description: "",
+    image: "",
+    narration: `Ti avvicini alla statua e noti che è la statua della dea della luce, alla base c'è una scritta che dice: 'Prega e sarai ricompensato'. Che cosa fai? `,
+    imagePath1: "/img/inchino.jpg",
+    options: [
+      {
+        id: "D2-A",
+        description: "Prega la dea",
+        image: "/img/mani.jpg",
+        next: "D3-A",
+      },
+      {
+        id: "D2-B",
+        description: "Ti allonatani e cerchi un'uscita",
+        image: "/img/uscita.jpg",
+        next: "D3-B",
+      },
+    ],
+  },
+  {
+    //! Cerchi un entrata secondaria
+    id: "D3-A",
+    title: "Prega la dea",
+    description: "",
+    image: "",
+    narration: `Ti inchini davanti alla statua e inizi a pregare, dopo qualche secondo gli occhi della dea si illuminano, la dea è grata per la tua preghiera e ti da la sua benedizione. Guadagni l'Abilità Fendente Divino! La tua arma ora è a + 10`,
+    imagePath1: "/img/spada_divina.jpg",
+    options: [
+      {
+        id: "D2-B",
+        description: "Ti allonatani e cerchi un'uscita",
+        image: "/img/uscita.jpg",
+        next: "D4-A",
+      },
+    ],
+  },
+  {
+    //! Entri dal portone principale
     id: "D1-A",
     title: "Provi a entrare dal portone principale",
     description: "",
@@ -133,19 +202,20 @@ export const paths = [
     options: [
       {
         id: "D1",
-        description: "",
-        image: "/img/portone_principale.jpg",
+        description: "Provi a combattere la guardia",
+        image: "/img/combattimento_guardia.jpg",
         next: "D1-A",
       },
       {
         id: "D2",
-        description: "",
-        image: "/img/entrata_secondaria.jpg",
+        description: "Provi a nasconderti",
+        image: "/img/nascondersi.jpg",
         next: "D2-B",
       },
     ],
   },
   {
+    //! Parli con l'albero
     id: "E",
     title: "Provi a parlare con l'albero",
     description: "",
@@ -155,21 +225,22 @@ export const paths = [
     imagePath1: "/img/scudo.jpg",
     options: [
       {
-        id: "D1",
-        description: "Prendi lo scudo",
+        id: "E1",
+        description: "Prendi lo scudo e prosegui",
         image: "/img/like.jpg",
-        next: "D1-A",
+        next: "D",
       },
       {
-        id: "D2",
+        id: "E2",
         description: "Lo rifiuti e prosegui",
         image: "/img/dislike.jpg",
-        next: "D2-B",
+        next: "D",
       },
     ],
   },
 
   {
+    //! La cripta
     id: "B",
     title: "la Cripta sotterranea",
     description: "Vai alla Cripta",
@@ -195,6 +266,7 @@ export const paths = [
     ],
   },
   {
+    //! Il castello
     id: "C",
     title: "Il Castello",
     description: "Vai al Castello",
