@@ -175,7 +175,7 @@ export const paths = [
     ],
   },
   {
-    //! Cerchi un entrata secondaria
+    //! Prega la dea
     id: "D3-A",
     title: "Prega la dea",
     description: "",

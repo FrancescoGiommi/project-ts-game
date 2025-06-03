@@ -15,7 +15,7 @@ export default function PlayerNamePage() {
   };
   return (
     <>
-      <div className="container text-center home-content">
+      <div className="text-center home-content">
         <h1>Inserisci il nome del tuo personaggio</h1>
         <form onSubmit={handleSubmit}>
           <input
