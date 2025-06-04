@@ -1,4 +1,4 @@
-export const enemies = [
+const enemies = [
   {
     id: 1,
     name: "Goblin",
@@ -15,4 +15,4 @@ export const enemies = [
   },
 ];
 
-module.exports = enemies;
+export default enemies;

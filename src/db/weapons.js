@@ -16,4 +16,4 @@ const weapons = [
   },
 ];
 
-module.exports = weapons;
+export default weapons;

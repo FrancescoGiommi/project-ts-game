@@ -1,4 +1,4 @@
-export const paths = [
+const paths = [
   {
     id: "start",
     floor: "Primo piano",
@@ -31,4 +31,4 @@ export const paths = [
   },
 ];
 
-module.exports = paths;
+export default paths;

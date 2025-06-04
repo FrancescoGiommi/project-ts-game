@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { gameData } from "../db/gameData";
+import paths from "../db/paths";
 import CardPath from "../components/CardPath";
 import RestartModal from "../components/RestartModal";
 import BattleModal from "../components/BattleModal";
 
 export default function PathDetail({ path }) {
   const { id } = useParams();
-
-  const { weapons, enemies, floors, paths } = gameData;
 
   const [restartModal, setRestarModal] = useState(false);
   const [battleModal, setBattleModal] = useState(false);

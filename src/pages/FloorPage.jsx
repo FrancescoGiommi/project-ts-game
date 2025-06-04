@@ -1,9 +1,8 @@
-import { gameData } from "../db/gameData.js";
+import paths from "../db/paths.js";
+
 import { useState, useEffect } from "react";
 import CardPath from "../components/CardPath.jsx";
 import { Link } from "react-router-dom";
-
-const { weapons, enemies, floors, paths } = gameData;
 
 export default function FloorPage() {
   const playerName = localStorage.getItem("playerName");
