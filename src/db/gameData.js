@@ -124,13 +124,13 @@ export const paths = [
         id: "D2",
         description: "Cerchi un entrata secondaria",
         image: "/img/entrata_secondaria.jpg",
-        next: "D2-B",
+        next: "D2-A",
       },
     ],
   },
   {
     //! Cerchi un entrata secondaria
-    id: "D2-B",
+    id: "D2-A",
     title: "Cerchi un entrata secondaria",
     description: "",
     image: "",
@@ -138,22 +138,22 @@ export const paths = [
     imagePath1: "/img/caverna.jpg",
     options: [
       {
-        id: "D1",
+        id: "D2-B1",
         description: "Vai verso la statua",
         image: "/img/statua_dea.jpg",
-        next: "D1-A",
+        next: "D3-A",
       },
       {
-        id: "D2",
+        id: "D2-C1",
         description: "Cerchi una via d'uscita",
         image: "/img/uscita_caverna.jpg",
-        next: "D2-A",
+        next: "D3-B",
       },
     ],
   },
   {
     //! Vai verso la statua
-    id: "D1-A",
+    id: "D3-A",
     title: "Vai verso la statua",
     description: "",
     image: "",
@@ -161,22 +161,22 @@ export const paths = [
     imagePath1: "/img/inchino.jpg",
     options: [
       {
-        id: "D2-A",
+        id: "D3-B",
         description: "Prega la dea",
         image: "/img/mani.jpg",
-        next: "D3-A",
+        next: "D3-B1",
       },
       {
-        id: "D2-B",
+        id: "D3-C",
         description: "Ti allonatani e cerchi un'uscita",
         image: "/img/uscita.jpg",
-        next: "D3-B",
+        next: "D3-C1",
       },
     ],
   },
   {
     //! Prega la dea
-    id: "D3-A",
+    id: "D3-B1",
     title: "Prega la dea",
     description: "",
     image: "",
@@ -184,10 +184,10 @@ export const paths = [
     imagePath1: "/img/spada_divina.jpg",
     options: [
       {
-        id: "D2-B",
+        id: "D3-B2",
         description: "Ti allonatani e cerchi un'uscita",
         image: "/img/uscita.jpg",
-        next: "D4-A",
+        next: "D4",
       },
     ],
   },
@@ -201,19 +201,31 @@ export const paths = [
     imagePath1: "/img/guardia_goblin.jpg",
     options: [
       {
-        id: "D1",
+        id: "D1-B",
         description: "Provi a combattere la guardia",
         image: "/img/combattimento_guardia.jpg",
-        next: "D1-A",
+        next: "D2-B",
       },
       {
-        id: "D2",
+        id: "D1-C",
         description: "Provi a nasconderti",
         image: "/img/nascondersi.jpg",
-        next: "D2-B",
+        next: "D2-C",
       },
     ],
   },
+  {
+    //! Combatti la guardia
+    id: "D2-B",
+    title: "Provi a combattere la guardia",
+    description: "",
+    image: "",
+    narration: `La guardia ti vede, suona un corno ed è pronta ad attaccarti!`,
+    imagePath1: "/img/guardia_goblin.jpg",
+    isBattle: true,
+    options: [],
+  },
+
   {
     //! Parli con l'albero
     id: "E",

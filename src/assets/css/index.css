@@ -125,8 +125,8 @@ body {
   width: 150px;
   border-radius: 12px;
   position: absolute;
-  top: 450px;
-  right: 600px;
+  top: 565px;
+  left: 600px;
 }
 
 .img-paths {
@@ -163,6 +163,19 @@ body {
   transition: transform 0.3s ease in-out;
 }
 
+.battle-button {
+  background-color: #860808;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: "MedievalSharp", cursive !important;
+  font-size: 1.2rem;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
 .main-image {
   position: absolute;
   bottom: 500px;
@@ -174,6 +187,16 @@ body {
   position: absolute;
   font-size: 30px;
   top: 350px;
+  left: 600px;
+  border: 2px solid #cfbb08;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.player-weapon {
+  position: absolute;
+  font-size: 30px;
+  top: 495px;
   left: 600px;
   border: 2px solid #cfbb08;
   padding: 10px;

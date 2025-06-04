@@ -26,15 +26,23 @@ export default function FloorPage() {
 
               {/* Descrizione */}
 
+              <div className="player-detail">
+                <h3 className="player-title">Giocatore</h3>
+                <p className="player-name">{playerName}</p>
+              </div>
+
               <img
                 className="img-paths main-image"
                 src={floors[0].image}
                 alt=""
               />
-              <img className="img-weapons" src={weapons[0].image} alt="" />
+              <div>
+                <h3 className="player-weapon">Arma</h3>
+                <img className="img-weapons" src={weapons[0].image} alt="" />
+              </div>
 
               <p className="description">
-                Benvenuto {playerName}! La tua arma è uno {weapons[0].name}.
+                Benvenuto! La tua arma è uno {weapons[0].name}.
                 <br />
                 Davanti a te si aprono tre sentieri, quale scegli?
               </p>

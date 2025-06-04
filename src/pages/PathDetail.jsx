@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { gameData } from "../db/gameData";
 import CardPath from "../components/CardPath";
 import RestartModal from "../components/RestartModal";
+import BattleModal from "../components/BattleModal";
 
 export default function PathDetail({ path }) {
   const { id } = useParams();
@@ -10,14 +11,35 @@ export default function PathDetail({ path }) {
   const { weapons, enemies, floors, paths } = gameData;
 
   const [restartModal, setRestarModal] = useState(false);
+  const [battleModal, setBattleModal] = useState(false);
+  const [battleResult, setBattleResult] = useState(null);
 
   const playerName = localStorage.getItem("playerName");
 
   const pathData = paths.find((path) => path.id === id);
 
+  // Funzione per il combattimento (lancio di un dado)
+  const handleBattle = () => {
+    const playerDice = Math.floor(Math.random() * 6) + 1;
+    const enemyDice = Math.floor(Math.random() * 6) + 1;
+
+    let result = "";
+    if (playerDice > enemyDice) {
+      result = "Hai vinto!";
+    } else if (playerDice < enemyDice) {
+      result = "Hai perso!";
+    } else {
+      result = "Pareggio!";
+    }
+
+    setBattleResult(result);
+  };
+
   if (!pathData) {
     return <h1>Percorso non trovato</h1>;
   }
+  console.log("pathData:", pathData);
+  console.log("isBattle:", pathData?.isBattle);
 
   return (
     <>
@@ -56,6 +78,7 @@ export default function PathDetail({ path }) {
                   </Link>
                 ))}
               </div>
+              {/* Mostra il bottone se si muore */}
               {pathData.isDeath && (
                 <div className="d-flex justify-content-center mt-4">
                   <button
@@ -68,13 +91,28 @@ export default function PathDetail({ path }) {
               )}
             </div>
             {restartModal && (
-              <RestartModal
-                onOpen={() => setRestarModal(true)}
-                onClose={() => setRestarModal(false)}
-              />
+              <RestartModal onClose={() => setRestarModal(false)} />
             )}
           </div>
+          {pathData.isBattle && (
+            <div className="d-flex justify-content-center mt-4">
+              <button
+                type="button"
+                class="btn btn-primary fs-1"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+                onClick={() => setBattleModal(true)}
+              >
+                ⚔️ Combatti
+              </button>
+            </div>
+          )}
         </div>
+        <BattleModal
+          onClose={() => setBattleModal(false)}
+          onBattle={handleBattle}
+          result={battleResult}
+        />
       </div>
     </>
   );
