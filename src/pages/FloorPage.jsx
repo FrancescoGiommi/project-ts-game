@@ -1,6 +1,6 @@
 import paths from "../db/paths.js";
+import weapons from "../db/weapons.js";
 
-import { useState, useEffect } from "react";
 import CardPath from "../components/CardPath.jsx";
 import { Link } from "react-router-dom";
 
@@ -8,10 +8,14 @@ export default function FloorPage() {
   const playerName = localStorage.getItem("playerName");
 
   // Raccogli tutti gli ID usati come "next"
+  // const allId = paths.map((obj) => obj.options.map((opt) => opt.id)).flat();
+
   const allId = paths.map((obj) => obj.options.map((opt) => opt.id)).flat();
 
-  // Filtra i percorsi iniziali
   const rootPaths = paths.filter((p) => !allId.includes(p.id));
+
+  // Filtra i percorsi iniziali
+  // const rootPaths = paths.filter((p) => !allId.includes(p.id));
 
   return (
     <>
@@ -49,9 +53,9 @@ export default function FloorPage() {
 
             <div className="paths">
               <div className="d-flex flex-row justify-content-around">
-                {rootPaths.map((path) => (
-                  <Link to={`/floor/${path.id}`} key={path.id}>
-                    <CardPath path={path} />
+                {paths[0].options.map((option) => (
+                  <Link to={`/floor/${option.id}`} key={option.id}>
+                    <CardPath path={option} />
                   </Link>
                 ))}
               </div>

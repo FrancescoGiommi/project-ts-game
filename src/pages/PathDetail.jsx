@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import paths from "../db/paths";
+import weapons from "../db/weapons";
 import CardPath from "../components/CardPath";
 import RestartModal from "../components/RestartModal";
 import BattleModal from "../components/BattleModal";
@@ -66,13 +67,19 @@ export default function PathDetail({ path }) {
 
               <img
                 className="img-paths main-image"
-                src={pathData.imagePath1}
+                src={pathData.image}
                 alt=""
               />
-              <p className="description">{pathData.narration}</p>
+
+              <div>
+                <h3 className="player-weapon">Arma</h3>
+                <img className="img-weapons" src={weapons[0].image} alt="" />
+              </div>
+
+              <p className="description">{pathData.description}</p>
             </div>
 
-            <div className=" paths">
+            <div className="paths">
               <div className=" d-flex flex-row- justify-content-around">
                 {pathData.options.map((path, index) => (
                   <Link to={`/floor/${path.id}`} key={index}>
@@ -86,7 +93,7 @@ export default function PathDetail({ path }) {
                 ))}
               </div>
               {/* Mostra il bottone se si muore */}
-              {pathData.isDeath && (
+              {pathData.deathChance && (
                 <div className="d-flex justify-content-center mt-4">
                   <button
                     className="btn btn-danger death-button fs-1"
