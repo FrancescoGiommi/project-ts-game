@@ -1,0 +1,38 @@
+
+
+{
+  "paths": [
+    {
+      "id": "",
+      "title": "",
+      "description": "",
+      "image": "",
+      "deathChance": 0,
+
+      "isBattle": false,
+      "enemyId": "",
+
+      "exp": 0,
+
+      "drops": [
+        {
+          "id": "",
+          "dropchance": 0
+        }
+      ],
+
+      "options": [
+        {
+          "id": "",
+          "description": "",
+          "image": "",
+          "next": "",
+          "unlockRequirements": []
+        }
+      ],
+
+      "firstImg": "",
+      "firstDesc": ""
+    }
+  ]
+}
