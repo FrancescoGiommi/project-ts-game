@@ -9,20 +9,20 @@ export default function FloorPage() {
   const playerName = localStorage.getItem("playerName");
 
   // Raccogli tutti gli ID usati come "next"
-  const allNext = paths.map((obj) => obj.options.map((opt) => opt.next)).flat();
+  const allId = paths.map((obj) => obj.options.map((opt) => opt.id)).flat();
 
   // Filtra i percorsi iniziali
-  const rootPaths = paths.filter((p) => !allNext.includes(p.id));
+  const rootPaths = paths.filter((p) => !allId.includes(p.id));
 
   return (
     <>
       <div className="main-img">
         <div className="container">
-          <h1 className="pt-5">Primo piano</h1>
+          <h1 className="pt-5">{paths[0].floor}</h1>
 
           <div>
             <div className="d-flex flex-column align-items-center justify-content-center text-center">
-              <h2 className="fs-1 subtitle">{floors[0].name}</h2>
+              <h2 className="fs-1 subtitle">{paths[0].title}</h2>
 
               {/* Descrizione */}
 
@@ -33,7 +33,7 @@ export default function FloorPage() {
 
               <img
                 className="img-paths main-image"
-                src={floors[0].image}
+                src={paths[0].image}
                 alt=""
               />
               <div>

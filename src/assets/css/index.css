@@ -245,3 +245,34 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.orco-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 12px;
+}
+
+.player-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 12px;
+}
+
+.modal-content {
+  margin-top: 335px;
+}
+
+.health-bar-container {
+  width: 100px;
+  height: 16px;
+  background-color: #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #aaa;
+}
+
+.health-bar {
+  height: 100%;
+  background-color: green;
+  transition: width 0.3s ease;
+}

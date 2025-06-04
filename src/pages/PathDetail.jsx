@@ -12,24 +12,36 @@ export default function PathDetail({ path }) {
 
   const [restartModal, setRestarModal] = useState(false);
   const [battleModal, setBattleModal] = useState(false);
+  const [playerDice, setPlayerDice] = useState(null);
+  const [enemyDice, setEnemyDice] = useState(null);
   const [battleResult, setBattleResult] = useState(null);
+  const [playerHealth, setPlayerHealth] = useState(5);
+  const [enemyHealth, setEnemyHealth] = useState(5);
 
   const playerName = localStorage.getItem("playerName");
 
   const pathData = paths.find((path) => path.id === id);
 
   // Funzione per il combattimento (lancio di un dado)
+
   const handleBattle = () => {
-    const playerDice = Math.floor(Math.random() * 6) + 1;
-    const enemyDice = Math.floor(Math.random() * 6) + 1;
+    // Dadi del gioccatore e del nemico
+    const newPlayerDice = Math.floor(Math.random() * 6) + 1;
+    const newEnemyDice = Math.floor(Math.random() * 6) + 1;
+
+    setPlayerDice(newPlayerDice);
+    setEnemyDice(newEnemyDice);
 
     let result = "";
-    if (playerDice > enemyDice) {
-      result = "Hai vinto!";
-    } else if (playerDice < enemyDice) {
-      result = "Hai perso!";
+    if (newPlayerDice > newEnemyDice) {
+      setEnemyHealth((prev) => Math.max(prev - 1, 0));
+
+      result = `Hai vinto!`;
+    } else if (newPlayerDice < newEnemyDice) {
+      setPlayerHealth((prev) => Math.max(prev - 1, 0));
+      result = `Hai perso!`;
     } else {
-      result = "Pareggio!";
+      result = `Hai parato!`;
     }
 
     setBattleResult(result);
@@ -38,8 +50,6 @@ export default function PathDetail({ path }) {
   if (!pathData) {
     return <h1>Percorso non trovato</h1>;
   }
-  console.log("pathData:", pathData);
-  console.log("isBattle:", pathData?.isBattle);
 
   return (
     <>
@@ -56,7 +66,6 @@ export default function PathDetail({ path }) {
                 <p className="player-name">{playerName}</p>
               </div>
 
-              {/* Descrizione */}
               <img
                 className="img-paths main-image"
                 src={pathData.imagePath1}
@@ -68,7 +77,7 @@ export default function PathDetail({ path }) {
             <div className=" paths">
               <div className=" d-flex flex-row- justify-content-around">
                 {pathData.options.map((path, index) => (
-                  <Link to={`/floor/${path.next}`} key={index}>
+                  <Link to={`/floor/${path.id}`} key={index}>
                     <CardPath
                       path={{
                         description: path.description,
@@ -95,10 +104,10 @@ export default function PathDetail({ path }) {
             )}
           </div>
           {pathData.isBattle && (
-            <div className="d-flex justify-content-center mt-4">
+            <div className="d-flex justify-content-center">
               <button
                 type="button"
-                class="btn btn-primary fs-1"
+                className="btn btn-primary fs-1"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
                 onClick={() => setBattleModal(true)}
@@ -110,8 +119,12 @@ export default function PathDetail({ path }) {
         </div>
         <BattleModal
           onClose={() => setBattleModal(false)}
-          onBattle={handleBattle}
+          battle={handleBattle}
           result={battleResult}
+          playerDice={playerDice}
+          enemyDice={enemyDice}
+          playerHealth={playerHealth}
+          enemyHealth={enemyHealth}
         />
       </div>
     </>
