@@ -93,7 +93,7 @@ export default function PathDetail({ path }) {
                 ))}
               </div>
               {/* Mostra il bottone se si muore */}
-              {pathData.deathChance && (
+              {Math.random() * 100 < pathData.deathChance && (
                 <div className="d-flex justify-content-center mt-4">
                   <button
                     className="btn btn-danger death-button fs-1"

@@ -7,6 +7,14 @@ const weapons = [
     description: "",
     image: "/img/spadone.jpg",
   },
+  {
+    id: 2,
+    name: "Spadone divino +10",
+    damage: 15,
+    rarity: "Leggendario",
+    description: "",
+    image: "/img/spada_divina.jpg",
+  },
 ];
 
 export default weapons;
