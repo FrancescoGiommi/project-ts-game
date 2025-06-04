@@ -1,4 +1,0 @@
-
-
-NODE_WIDTH = 120
-NODE_HEIGHT = 80
