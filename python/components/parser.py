@@ -21,15 +21,8 @@ def parse_default_exported_array(filepath):
 
 
 def write_js_array(varname, data, filepath):
-    """
-    Scrive un array JS nel formato:
-    export const varname = [...];
-    module.exports = varname;
-    """
-    import json5
-
     formatted = json5.dumps(data, indent=2, ensure_ascii=False)
-    output = f"export const {varname} = {formatted};\n\nmodule.exports = {varname};\n"
+    output = f"const {varname} = {formatted};\n\nexport default {varname};\n"
 
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(output)

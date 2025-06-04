@@ -1,7 +1,7 @@
 # node_editor.py
 
 import os
-from PyQt5.QtCore import QPointF
+from PyQt5.QtCore import QPointF, Qt
 from PyQt5.QtGui import QPainter
 from PyQt5.QtWidgets import (
     QWidget, QGraphicsView, QPushButton, QHBoxLayout, QVBoxLayout
@@ -13,6 +13,22 @@ from python.components.node import Node
 from python.components.parser import write_paths_to_js, parse_default_exported_array
 from python.components.data_editor import DataEditor  # ← Import di DataEditor
 from python.uihelper.ui_library import UIutils
+
+class ZoomableGraphicsView(QGraphicsView):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.setTransformationAnchor(QGraphicsView.AnchorUnderMouse)
+        self.setResizeAnchor(QGraphicsView.AnchorUnderMouse)
+        self.zoom_factor = 1.15
+
+    def wheelEvent(self, event):
+        if event.modifiers() == Qt.ControlModifier:
+            if event.angleDelta().y() > 0:
+                self.scale(self.zoom_factor, self.zoom_factor)
+            else:
+                self.scale(1 / self.zoom_factor, 1 / self.zoom_factor)
+        else:
+            super().wheelEvent(event)
 
 
 class NodeEditor(QWidget):
@@ -32,7 +48,8 @@ class NodeEditor(QWidget):
         left_container.setLayout(left_layout)
 
         # QGraphicsView e scena dei nodi
-        self.view = QGraphicsView()
+        self.view = ZoomableGraphicsView()
+
         self.scene = LinkScene(self)
         self.view.setScene(self.scene)
         self.view.setRenderHint(QPainter.Antialiasing)
