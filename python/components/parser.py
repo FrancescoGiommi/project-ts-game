@@ -20,6 +20,21 @@ def parse_default_exported_array(filepath):
         raise SyntaxError(f"Errore nel parsing del file: {e}")
 
 
+def write_js_array(varname, data, filepath):
+    """
+    Scrive un array JS nel formato:
+    export const varname = [...];
+    module.exports = varname;
+    """
+    import json5
+
+    formatted = json5.dumps(data, indent=2, ensure_ascii=False)
+    output = f"export const {varname} = {formatted};\n\nmodule.exports = {varname};\n"
+
+    with open(filepath, "w", encoding="utf-8") as f:
+        f.write(output)
+
+
 def write_paths_to_js(data, filepath):
 
     formatted = json5.dumps(data, indent=2, ensure_ascii=False)

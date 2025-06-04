@@ -11,7 +11,7 @@ from PyQt5.QtWidgets import (
 	QComboBox, QFileDialog, QMessageBox, QLabel
 )
 
-from python.components.parser import parse_default_exported_array
+from python.components.parser import parse_default_exported_array, write_js_array
 
 
 class DataEditor(QWidget):
@@ -254,15 +254,11 @@ class DataEditor(QWidget):
 
 		self._populate_list(self.weapons, self.weapons_list, display_key="name")
 
-		# Scrivo su file
 		try:
-			with open(self.weapons_path, "w", encoding="utf-8") as f:
-				data_str = json5.dumps(self.weapons, indent=2, ensure_ascii=False)
-				f.write(f"export const weapons = {data_str};\n\nmodule.exports = weapons;\n")
+			write_js_array("weapons", self.weapons, self.weapons_path)
 			QMessageBox.information(self, "Salvataggio", "weapons.js salvato correttamente.")
 		except Exception as e:
 			QMessageBox.critical(self, "Errore scrittura", f"Errore salvando weapons.js:\n{e}")
-
 
 	# --------------------------
 	# 2) COSTRUZIONE FORM ENEMY (AGGIORNATO)
@@ -458,11 +454,9 @@ class DataEditor(QWidget):
 		# Rifaccio il listing per aggiornare il nome in lista
 		self._populate_list(self.enemies, self.enemies_list, display_key="name")
 
-		# Scrivo su file
 		try:
-			with open(self.enemies_path, "w", encoding="utf-8") as f:
-				data_str = json5.dumps(self.enemies, indent=2, ensure_ascii=False)
-				f.write(f"export const enemies = {data_str};\n\nmodule.exports = enemies;\n")
+			write_js_array("enemies", self.enemies, self.enemies_path)
 			QMessageBox.information(self, "Salvataggio", "enemies.js salvato correttamente.")
 		except Exception as e:
 			QMessageBox.critical(self, "Errore scrittura", f"Errore salvando enemies.js:\n{e}")
+
