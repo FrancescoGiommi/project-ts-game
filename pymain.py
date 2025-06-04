@@ -1,38 +1,22 @@
 import sys
-import json
 import os
-from PyQt5 import QtWidgets, QtGui, QtCore
+from PyQt5.QtWidgets import QApplication
 import qtmodern.styles
 import qtmodern.windows
 
-from python.components.narrative_graph_scene import NarrativeGraphScene
-
-
-class MainWindow(QtWidgets.QMainWindow):
-    def __init__(self, json_path):
-        super().__init__()
-        self.setWindowTitle("Narrative Graph Editor")
-        self.resize(1000, 600)
-
-        self.view = QtWidgets.QGraphicsView()
-        self.setCentralWidget(self.view)
-
-        with open(json_path, "r") as f:
-            self.json_data = json.load(f)
-
-        self.scene = NarrativeGraphScene(self.json_data)
-        self.view.setScene(self.scene)
-        self.view.setRenderHint(QtGui.QPainter.Antialiasing)
-
-def main():
-    app = QtWidgets.QApplication(sys.argv)
-    qtmodern.styles.dark(app)
-
-    main_window = MainWindow("paths.json")
-    modern_window = qtmodern.windows.ModernWindow(main_window)
-    modern_window.show()
-
-    sys.exit(app.exec_())
+from python.components.node_editor import NodeEditor
+from python.uihelper.ui_library import UIutils
 
 if __name__ == "__main__":
-    main()
+    app = QApplication(sys.argv)
+    qtmodern.styles.dark(app)
+
+    js_path = os.path.normpath(os.path.join(os.getcwd(), "src", "db", "paths.js"))
+    js_path2 = os.path.normpath(os.path.join(os.getcwd(), "src", "db", "weapons.js"))
+    js_path3 = os.path.normpath(os.path.join(os.getcwd(), "src", "db", "enemies.js"))
+    mw = NodeEditor(js_path, js_path2, js_path3)
+    modern_window = qtmodern.windows.ModernWindow(mw)
+    modern_window.setMinimumSize(1500, 800)  # o qualsiasi valore utile
+    modern_window.show()
+    UIutils.center_window(mw)
+    sys.exit(app.exec_())
