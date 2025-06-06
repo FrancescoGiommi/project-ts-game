@@ -279,6 +279,7 @@ body {
   transition: width 0.3s ease;
 }
 
+/* Small device */
 @media (max-width: 576px) {
   .floor-title {
     position: absolute;
@@ -367,5 +368,107 @@ body {
     top: 155px;
     left: 470px;
     display: none;
+  }
+
+  .margin-card {
+    margin-top: 100px;
+  }
+}
+
+/* Extra small device */
+@media (max-width: 480px) {
+  .floor-title {
+    position: absolute;
+    top: 65px;
+    right: 300px;
+  }
+
+  .subtitle {
+    position: absolute;
+    top: 180px;
+  }
+
+  .main-image {
+    position: absolute;
+    top: 235px;
+    width: 455px;
+    height: 365px;
+    margin-top: 25px;
+  }
+
+  .description {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    padding: 10px;
+    top: 620px;
+    font-size: 18px;
+    margin-top: 20px;
+  }
+
+  .img-paths {
+    width: 135px;
+    height: 100px;
+    border-radius: 12px;
+  }
+
+  .paths-action {
+    background-color: #cfcc08;
+    color: black;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-family: "MedievalSharp", cursive !important;
+    font-size: 15px;
+    width: 135px;
+    height: 105px;
+    text-align: center;
+  }
+
+  .paths {
+    margin-top: 750px;
+  }
+
+  .player-title {
+    position: absolute;
+    font-size: 18px;
+    top: 124px;
+    left: 315px;
+    border: 2px solid #cfbb08;
+    padding: 8px;
+    border-radius: 12px;
+  }
+
+  .player-name {
+    position: absolute;
+    margin-top: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 18px;
+    top: 155px;
+    left: 335px;
+  }
+
+  .player-weapon {
+    position: absolute;
+    font-size: 18px;
+    top: 105px;
+    left: 470px;
+    border: 2px solid #cfbb08;
+    padding: 8px;
+    border-radius: 12px;
+    display: none;
+  }
+
+  .img-weapons {
+    width: 90px;
+    border-radius: 12px;
+    position: absolute;
+    top: 155px;
+    left: 470px;
+    display: none;
+  }
+
+  .margin-card {
+    margin-top: 100px;
   }
 }
