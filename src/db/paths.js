@@ -18,19 +18,19 @@ const paths = [
     options: [
       {
         id: "node_1",
-        description: "Vai all'insediamento dei Goblin",
+        description: "Accampamento Goblin",
         image: "/img/goblin.jpg",
         unlockRequirements: [],
       },
       {
         id: "node_2",
-        description: "Vai alla Cripta",
+        description: "Cripta",
         image: "/img/cripta.jpg",
         unlockRequirements: [],
       },
       {
         id: "node_3",
-        description: "Vai al Castello",
+        description: "Castello",
         image: "/img/castello.jpg",
         unlockRequirements: [],
       },
@@ -91,7 +91,7 @@ const paths = [
     floor: "Primo piano",
     title: "Il Castello",
     description: "stai andando verso il Castello ma lungo il percorso incontri un mercante con una carrozza incastrata nel fango. Ti chiede aiuto per tirarla fuori, che cosa fai?",
-    image: "/img/strada.jpg",
+    image: "/img/carrozza.jpg",
     deathChance: 0,
     isBattle: false,
     enemyId: "",
@@ -130,13 +130,13 @@ const paths = [
     options: [
       {
         id: "node_6",
-        description: "Vai a Prosegui per la tua strada Nodo",
+        description: "Prosegui per la tua strada",
         image: "/img/continua.jpg",
         unlockRequirements: [],
       },
       {
         id: "node_7",
-        description: "Vai a Provi a parlare con l'albero Nodo",
+        description: "Provi a parlare con l'albero",
         image: "/img/albero_parlante.jpg",
         unlockRequirements: [],
       },
@@ -158,7 +158,7 @@ const paths = [
     options: [
       {
         id: "node_8",
-        description: "Vai a Provi a entrare dal portone principale",
+        description: "Provi a entrare dal portone principale",
         image: "/img/portone_principale.jpg",
         unlockRequirements: [],
       },

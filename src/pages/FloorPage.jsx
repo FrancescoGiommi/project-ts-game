@@ -19,9 +19,9 @@ export default function FloorPage() {
 
   return (
     <>
-      <div className="main-img">
+      <div className="background-img">
         <div className="container">
-          <h1 className="pt-5">{paths[0].floor}</h1>
+          <h1 className="pt-5 floor-title">{paths[0].floor}</h1>
 
           <div>
             <div className="d-flex flex-column align-items-center justify-content-center text-center">
@@ -29,16 +29,13 @@ export default function FloorPage() {
 
               {/* Descrizione */}
 
-              <div className="player-detail">
+              {/* <div className="player-detail">
                 <h3 className="player-title">Giocatore</h3>
                 <p className="player-name">{playerName}</p>
-              </div>
+              </div> */}
 
-              <img
-                className="img-paths main-image"
-                src={paths[0].image}
-                alt=""
-              />
+              <img className="main-image" src={paths[0].image} alt="" />
+
               <div>
                 <h3 className="player-weapon">Arma</h3>
                 <img className="img-weapons" src={weapons[0].image} alt="" />
@@ -52,7 +49,7 @@ export default function FloorPage() {
             </div>
 
             <div className="paths">
-              <div className="d-flex flex-row justify-content-around">
+              <div className="d-flex flex-row justify-content-around gap-4">
                 {paths[0].options.map((option) => (
                   <Link to={`/floor/${option.id}`} key={option.id}>
                     <CardPath path={option} />

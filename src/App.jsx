@@ -7,7 +7,7 @@ import Navbar from "./components/Navbar";
 // Pagine
 import HomePage from "./pages/HomePage";
 import PlayerNamePage from "./pages/PlayerNamePage";
-import Stats from "./pages/PlayerStatsPage";
+import PlayerImage from "./pages/PlayerImage";
 import FloorPage from "./pages/FloorPage";
 import PathDetail from "./pages/PathDetail";
 
@@ -17,11 +17,11 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Navbar />
+        {/* <Navbar /> */}
         <Routes>
           <Route element={<HomePage />} path="/" />
           <Route element={<PlayerNamePage />} path="/playerName" />
-          <Route element={<Stats />} path="/stats" />
+          <Route element={<PlayerImage />} path="/playerImg" />
           <Route element={<FloorPage />} path="/floor" />
           <Route element={<PathDetail />} path="/floor/:id" />
         </Routes>

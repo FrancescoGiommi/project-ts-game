@@ -14,35 +14,56 @@ export default function PathDetail({ path }) {
   const [playerDice, setPlayerDice] = useState(null);
   const [enemyDice, setEnemyDice] = useState(null);
   const [battleResult, setBattleResult] = useState(null);
-  const [playerHealth, setPlayerHealth] = useState(5);
-  const [enemyHealth, setEnemyHealth] = useState(5);
+  const [playerHealth, setPlayerHealth] = useState(20);
+  const [enemyHealth, setEnemyHealth] = useState(20);
 
   const playerName = localStorage.getItem("playerName");
 
   const pathData = paths.find((path) => path.id === id);
 
-  // Funzione per il combattimento (lancio di un dado)
-
+  //! Funzione per il combattimento (lancio di un dado)
   const handleBattle = () => {
-    // Dadi del gioccatore e del nemico
+    // Tiro dei dadi
     const newPlayerDice = Math.floor(Math.random() * 6) + 1;
     const newEnemyDice = Math.floor(Math.random() * 6) + 1;
 
+    // Set dei dadi
     setPlayerDice(newPlayerDice);
     setEnemyDice(newEnemyDice);
 
-    let result = "";
-    if (newPlayerDice > newEnemyDice) {
-      setEnemyHealth((prev) => Math.max(prev - 1, 0));
+    // Stato temporaneo delle vite
+    let updatedPlayerHealth = playerHealth;
+    let updatedEnemyHealth = enemyHealth;
 
-      result = `Hai vinto!`;
+    // Risultato della battaglia
+    let result = "";
+
+    // Calcolo danni
+    if (newPlayerDice > newEnemyDice) {
+      updatedEnemyHealth = Math.max(enemyHealth - 1, 0);
+      result = `Hai colpito il nemico!`;
     } else if (newPlayerDice < newEnemyDice) {
-      setPlayerHealth((prev) => Math.max(prev - 1, 0));
-      result = `Hai perso!`;
+      updatedPlayerHealth = Math.max(playerHealth - 1, 0);
+      result = `Hai subito un colpo!`;
     } else {
       result = `Hai parato!`;
     }
 
+    // Aggiorna gli stati
+    setPlayerHealth(updatedPlayerHealth);
+    setEnemyHealth(updatedEnemyHealth);
+
+    // Controllo fine partita
+    if (updatedPlayerHealth === 0) {
+      result = "Sei morto!";
+      setBattleModal(false);
+      setRestarModal(true);
+    } else if (updatedEnemyHealth === 0) {
+      result = "Hai vinto!";
+      setBattleModal(false);
+    }
+
+    // Mostra il risultato
     setBattleResult(result);
   };
 
@@ -52,24 +73,20 @@ export default function PathDetail({ path }) {
 
   return (
     <>
-      <div className="main-img">
+      <div className="background-img">
         <div className="container">
-          <h1 className="pt-5">Primo piano</h1>
+          <h1 className="pt-5 floor-title">{paths[0].floor}</h1>
 
           <div>
             <div className="d-flex flex-column align-items-center justify-content-center text-center">
               <h3 className="fs-1 subtitle">{pathData.title}</h3>
 
-              <div className="player-detail">
+              {/* <div className="player-detail">
                 <h3 className="player-title">Giocatore</h3>
                 <p className="player-name">{playerName}</p>
-              </div>
+              </div> */}
 
-              <img
-                className="img-paths main-image"
-                src={pathData.image}
-                alt=""
-              />
+              <img className="main-image" src={pathData.image} alt="" />
 
               <div>
                 <h3 className="player-weapon">Arma</h3>
@@ -80,7 +97,7 @@ export default function PathDetail({ path }) {
             </div>
 
             <div className="paths">
-              <div className=" d-flex flex-row- justify-content-around">
+              <div className="d-flex flex-row justify-content-around">
                 {pathData.options.map((path, index) => (
                   <Link to={`/floor/${path.id}`} key={index}>
                     <CardPath

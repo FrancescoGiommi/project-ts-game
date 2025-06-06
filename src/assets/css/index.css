@@ -89,7 +89,7 @@ body {
   }
 }
 
-.main-img {
+.background-img {
   background-image: url("/public/img/vecchio_libro.jpg");
   background-size: cover;
   background-position: center;
@@ -178,9 +178,10 @@ body {
 
 .main-image {
   position: absolute;
-  bottom: 500px;
+  top: 300px;
   width: 700px;
   height: 450px;
+  border-radius: 12px;
 }
 
 .player-title {
@@ -217,7 +218,7 @@ body {
   transition: transform 0.3s ease in-out;
 }
 
-.paths-button {
+.paths-action {
   background-color: #cfbb08;
   color: black;
   padding: 10px 20px;
@@ -229,7 +230,7 @@ body {
   width: 250px;
 }
 
-.paths-button:hover {
+.paths-action:hover {
   background-color: #e1f016;
   transition: transform 0.3s ease in-out;
 }
@@ -263,16 +264,108 @@ body {
 }
 
 .health-bar-container {
-  width: 100px;
+  width: 150px;
   height: 16px;
   background-color: #ddd;
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid #aaa;
+  margin-bottom: 10px;
 }
 
 .health-bar {
   height: 100%;
   background-color: green;
   transition: width 0.3s ease;
+}
+
+@media (max-width: 576px) {
+  .floor-title {
+    position: absolute;
+    top: 65px;
+    right: 350px;
+  }
+
+  .subtitle {
+    position: absolute;
+    top: 180px;
+  }
+
+  .main-image {
+    position: absolute;
+    top: 235px;
+    width: 530px;
+    height: 365px;
+  }
+
+  .description {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    padding: 10px;
+    top: 620px;
+    font-size: 18px;
+  }
+
+  .img-paths {
+    width: 150px;
+    height: 100px;
+    border-radius: 12px;
+  }
+
+  .paths-action {
+    background-color: #cfcc08;
+    color: black;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-family: "MedievalSharp", cursive !important;
+    font-size: 15px;
+    width: 150px;
+    height: 80px;
+    text-align: center;
+  }
+
+  .paths {
+    margin-top: 750px;
+  }
+
+  .player-title {
+    position: absolute;
+    font-size: 18px;
+    top: 124px;
+    left: 315px;
+    border: 2px solid #cfbb08;
+    padding: 8px;
+    border-radius: 12px;
+  }
+
+  .player-name {
+    position: absolute;
+    margin-top: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 18px;
+    top: 155px;
+    left: 335px;
+  }
+
+  .player-weapon {
+    position: absolute;
+    font-size: 18px;
+    top: 105px;
+    left: 470px;
+    border: 2px solid #cfbb08;
+    padding: 8px;
+    border-radius: 12px;
+    display: none;
+  }
+
+  .img-weapons {
+    width: 90px;
+    border-radius: 12px;
+    position: absolute;
+    top: 155px;
+    left: 470px;
+    display: none;
+  }
 }

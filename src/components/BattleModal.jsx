@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 export default function BattleModal({
   result,
   battle,
@@ -6,6 +8,12 @@ export default function BattleModal({
   playerHealth,
   enemyHealth,
 }) {
+  const navigate = useNavigate();
+
+  const handleRestart = () => {
+    // Vai alla home
+    navigate("/floor");
+  };
   return (
     <div
       className="modal fade"
@@ -13,6 +21,8 @@ export default function BattleModal({
       tabIndex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
+      data-bs-backdrop={playerHealth === 0 ? "static" : "true"}
+      data-bs-keyboard={playerHealth === 0 ? "false" : "true"}
     >
       <div className="modal-dialog">
         <div className="modal-content">
@@ -30,7 +40,7 @@ export default function BattleModal({
                   <div className="health-bar-container">
                     <div
                       className="health-bar"
-                      style={{ width: `${(playerHealth / 5) * 100}%` }}
+                      style={{ width: `${(playerHealth / 20) * 100}%` }}
                     ></div>
                   </div>
 
@@ -48,7 +58,7 @@ export default function BattleModal({
                   <div className="health-bar-container">
                     <div
                       className="health-bar"
-                      style={{ width: `${(enemyHealth / 5) * 100}%` }}
+                      style={{ width: `${(enemyHealth / 20) * 100}%` }}
                     ></div>
                   </div>
 
@@ -63,13 +73,29 @@ export default function BattleModal({
                 </div>
               </div>
 
-              <button
-                type="button"
-                className="btn btn-primary w-50 mx-auto"
-                onClick={battle}
-              >
-                ⚔️ Lancia il dado
-              </button>
+              {/* Se la vita del giocatore è scesa a 0 o la vita del nemico è scesa a 0, disabilito il bottone */}
+              {playerHealth === 0 || enemyHealth === 0 ? (
+                <button
+                  type="button"
+                  className="btn btn-primary w-50 mx-auto"
+                  onClick={battle}
+                  disabled={
+                    // (playerHealth === 0 && enemyHealth > 0) ||
+                    // (enemyHealth === 0 && playerHealth > 0)
+                    true
+                  }
+                >
+                  ⚔️ Lancia il dado
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className="btn btn-primary w-50 mx-auto"
+                  onClick={battle}
+                >
+                  ⚔️ Lancia il dado
+                </button>
+              )}
             </div>
             {result && (
               <div className="mt-4">
@@ -79,16 +105,26 @@ export default function BattleModal({
             )}
           </div>
           <div className="modal-footer">
-            <button
-              type="button"
-              className="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Chiudi
-            </button>
-            <button type="button" className="btn btn-primary">
-              Combatti!
-            </button>
+            {/* Faccio comparire il bottone 'chiudi' solo se vinco la battaglia */}
+            {enemyHealth === 0 && playerHealth > 0 && (
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Chiudi
+              </button>
+            )}
+            {/* Faccio comparire il bottone 'ricomincia' solo se perdo la battaglia */}
+            {playerHealth === 0 && enemyHealth > 0 && (
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={handleRestart}
+              >
+                Ricomincia
+              </button>
+            )}
           </div>
         </div>
       </div>
