@@ -1,325 +1,301 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>928</width>
-    <height>640</height>
+    <width>944</width>
+    <height>768</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Form</string>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout_6">
-   <item>
-    <layout class="QVBoxLayout" name="verticalLayout_4">
+  <widget class="QListWidget" name="listWeapons">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>70</y>
+     <width>256</width>
+     <height>371</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="leFilter">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>40</y>
+     <width>251</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="placeholderText">
+    <string>Search...</string>
+   </property>
+  </widget>
+  <widget class="QTabWidget" name="tabWidget">
+   <property name="geometry">
+    <rect>
+     <x>480</x>
+     <y>30</y>
+     <width>361</width>
+     <height>691</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="tab">
+    <attribute name="title">
+     <string>Weapon Information</string>
+    </attribute>
+    <layout class="QVBoxLayout" name="verticalLayout_3">
      <item>
-      <widget class="QLineEdit" name="leFilter">
-       <property name="placeholderText">
-        <string>Search...</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QListWidget" name="listWeapons"/>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <widget class="QTabWidget" name="tabWidget">
-     <property name="currentIndex">
-      <number>0</number>
-     </property>
-     <widget class="QWidget" name="tab">
-      <attribute name="title">
-       <string>Weapon Information</string>
-      </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_3">
+      <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,2,0,0,0,0,0,0,0,0">
        <item>
-        <widget class="QLabel" name="label_4">
+        <widget class="QLabel" name="id_label">
          <property name="text">
-          <string/>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
+          <string>ID:</string>
          </property>
         </widget>
        </item>
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout" stretch="1,0,1,3,0,1,1,0,0,1,1,1,1">
-         <property name="spacing">
-          <number>12</number>
-         </property>
+        <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,2">
          <item>
-          <widget class="QLabel" name="id_label">
+          <widget class="QLabel" name="label">
            <property name="text">
-            <string>ID:</string>
+            <string>Name</string>
            </property>
           </widget>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,2">
-           <item>
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Name</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="leTitle"/>
-           </item>
-          </layout>
+          <widget class="QLineEdit" name="leTitle"/>
          </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,2">
          <item>
           <widget class="QLabel" name="label_2">
            <property name="text">
-            <string>Description:</string>
+            <string>Description</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QTextEdit" name="leDescription"/>
          </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="Line" name="line_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_8">
+         <property name="text">
+          <string>Weapon Type</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="Line" name="line_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="1,2">
          <item>
-          <widget class="Line" name="line_2">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+          <widget class="QLabel" name="label_6">
+           <property name="text">
+            <string>Rarity</string>
            </property>
           </widget>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="1,2">
+          <widget class="QComboBox" name="comboBox">
            <item>
-            <widget class="QLabel" name="label_6">
-             <property name="text">
-              <string>Rarity</string>
-             </property>
-            </widget>
+            <property name="text">
+             <string>Common</string>
+            </property>
            </item>
            <item>
-            <widget class="QComboBox" name="comboBox">
-             <item>
-              <property name="text">
-               <string>Common</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Non Common</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Rare</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Epic</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Legendary</string>
-              </property>
-             </item>
-            </widget>
+            <property name="text">
+             <string>Non Common</string>
+            </property>
            </item>
-          </layout>
+           <item>
+            <property name="text">
+             <string>Rare</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Epic</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Legendary</string>
+            </property>
+           </item>
+          </widget>
          </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="1,2">
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="1,2">
-           <item>
-            <widget class="QLabel" name="label_5">
-             <property name="text">
-              <string>Damage:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QSpinBox" name="sbDamage"/>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_5">
-           <item>
-            <widget class="Line" name="line_3">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="label_9">
-             <property name="text">
-              <string>Weapons Type Language:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_2">
-             <item>
-              <widget class="QRadioButton" name="radioButton">
-               <property name="text">
-                <string>English</string>
-               </property>
-               <property name="checked">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QRadioButton" name="radioButton_2">
-               <property name="text">
-                <string>Italian</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <widget class="Line" name="line_4">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+          <widget class="QLabel" name="label_5">
+           <property name="text">
+            <string>Damage:</string>
            </property>
           </widget>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="1,2">
-           <item>
-            <widget class="QLabel" name="label_8">
-             <property name="text">
-              <string>Weapon Type</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QComboBox" name="weapType">
-             <item>
-              <property name="text">
-               <string>None</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-          </layout>
+          <widget class="QSpinBox" name="sbDamage"/>
          </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="1,2,0">
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="1,2,0">
-           <item>
-            <widget class="QLabel" name="label_3">
-             <property name="text">
-              <string>Image</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="leImage"/>
-           </item>
-           <item>
-            <widget class="QPushButton" name="btnImage">
-             <property name="text">
-              <string>...</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <widget class="Line" name="line">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>Image</string>
            </property>
           </widget>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_12">
-           <item>
-            <widget class="QPushButton" name="btnRemoveNode">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="font">
-              <font/>
-             </property>
-             <property name="text">
-              <string>Delete Weapon (No rollback)</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="pushButton">
-             <property name="text">
-              <string>Create Weapon</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
+          <widget class="QLineEdit" name="leImage"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnImage">
+           <property name="text">
+            <string>...</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="Line" name="line">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_12">
+         <item>
+          <widget class="QPushButton" name="btnRemoveNode">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="font">
+            <font/>
+           </property>
+           <property name="text">
+            <string>Delete Weapon (No rollback)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton">
+           <property name="text">
+            <string>Create Weapon</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
       </layout>
-     </widget>
-     <widget class="QWidget" name="tab_2">
-      <attribute name="title">
-       <string>Custom Params</string>
-      </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
+     </item>
+     <item>
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="tab_2">
+    <attribute name="title">
+     <string>Custom Params</string>
+    </attribute>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_7">
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_7">
-         <item>
-          <widget class="QLabel" name="label_7">
-           <property name="text">
-            <string>Custom parameters:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btnCustomParameters">
-           <property name="text">
-            <string>Edit Custom param List</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>Custom parameters:</string>
+         </property>
+        </widget>
        </item>
        <item>
-        <widget class="QScrollArea" name="scrollCustomParams">
-         <property name="widgetResizable">
-          <bool>true</bool>
+        <widget class="QPushButton" name="btnCustomParameters">
+         <property name="text">
+          <string>Edit Custom param List</string>
          </property>
-         <widget class="QWidget" name="scrollAreaWidgetContents">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>430</width>
-            <height>544</height>
-           </rect>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_9">
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_13"/>
-           </item>
-          </layout>
-         </widget>
         </widget>
        </item>
       </layout>
-     </widget>
-    </widget>
-   </item>
-  </layout>
+     </item>
+     <item>
+      <widget class="QScrollArea" name="scrollCustomParams">
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="scrollAreaWidgetContents">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>339</width>
+          <height>613</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_9">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_13"/>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget_4">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>560</y>
+     <width>241</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_8"/>
+  </widget>
  </widget>
  <resources/>
  <connections/>

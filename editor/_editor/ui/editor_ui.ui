@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1403</width>
-    <height>866</height>
+    <width>1221</width>
+    <height>766</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -31,7 +31,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1403</width>
+     <width>1221</width>
      <height>21</height>
     </rect>
    </property>
@@ -40,16 +40,22 @@
      <string>File</string>
     </property>
     <addaction name="actionSave"/>
-    <addaction name="actionPurge_Path"/>
-   </widget>
-   <widget class="QMenu" name="menuEnviroment">
-    <property name="title">
-     <string>Enviroment</string>
-    </property>
     <addaction name="actionPreferences"/>
+    <addaction name="actionQuit"/>
+   </widget>
+   <widget class="QMenu" name="menuWindow">
+    <property name="title">
+     <string>Window</string>
+    </property>
+    <addaction name="actionPath"/>
+    <addaction name="actionWeapons"/>
+    <addaction name="actionItems"/>
+    <addaction name="actionEnemies"/>
+    <addaction name="actionSpells"/>
+    <addaction name="actionAbilities"/>
    </widget>
    <addaction name="menuFile"/>
-   <addaction name="menuEnviroment"/>
+   <addaction name="menuWindow"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionSave">
@@ -95,19 +101,9 @@
     <string>Abilities</string>
    </property>
   </action>
-  <action name="actionPreferencess">
-   <property name="text">
-    <string>Enviroment</string>
-   </property>
-  </action>
   <action name="actionPreferences">
    <property name="text">
-    <string>Select Enviroment</string>
-   </property>
-  </action>
-  <action name="actionPurge_Path">
-   <property name="text">
-    <string>Purge Path</string>
+    <string>Enviroment</string>
    </property>
   </action>
  </widget>
