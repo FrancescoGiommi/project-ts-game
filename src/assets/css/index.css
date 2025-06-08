@@ -219,11 +219,11 @@ body {
 }
 
 .paths-action {
-  background-color: #cfbb08;
+  background-color: rgba(255, 255, 255, 0.8);
   color: black;
+  border: 1px solid #cfcc08;
   padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
+  border-radius: 12px;
   cursor: pointer;
   font-family: "MedievalSharp", cursive !important;
   font-size: 1.2rem;
@@ -279,12 +279,61 @@ body {
   transition: width 0.3s ease;
 }
 
+.paths-grid {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* puoi anche usare flex-start + padding */
+  padding: 20px;
+}
+
+.modal-dialog {
+  background-color: white;
+  width: 90%;
+  max-height: 90vh;
+  overflow: hidden; /* impedisce overflow fuori */
+  border-radius: 12px;
+  padding: 16px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content-scroll {
+  overflow-y: auto;
+  flex: 1; /* OCCUPA tutto lo spazio verticale rimanente */
+  padding-right: 8px;
+  margin-top: 20px;
+}
+
+.paths-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.btn-paths {
+  position: absolute;
+  bottom: 170px;
+  left: 80px;
+}
 /* Small device */
 @media (max-width: 576px) {
   .floor-title {
     position: absolute;
     top: 65px;
     right: 350px;
+    display: none;
   }
 
   .subtitle {
@@ -315,15 +364,15 @@ body {
   }
 
   .paths-action {
-    background-color: #cfcc08;
-    color: black;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: balck;
     border: none;
     border-radius: 12px;
     cursor: pointer;
     font-family: "MedievalSharp", cursive !important;
     font-size: 15px;
-    width: 150px;
-    height: 80px;
+    width: auto;
+    height: auto;
     text-align: center;
   }
 
@@ -381,18 +430,19 @@ body {
     position: absolute;
     top: 65px;
     right: 300px;
+    display: none;
   }
 
   .subtitle {
     position: absolute;
-    top: 180px;
+    top: 90px;
   }
 
   .main-image {
     position: absolute;
-    top: 235px;
-    width: 455px;
-    height: 365px;
+    top: 125px;
+    width: 415px;
+    height: 260px;
     margin-top: 25px;
   }
 
@@ -401,28 +451,160 @@ body {
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 12px;
     padding: 10px;
-    top: 620px;
+    top: 410px;
     font-size: 18px;
     margin-top: 20px;
   }
 
+  .path-card {
+    position: relative;
+    width: 150px;
+    height: 118px;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
   .img-paths {
-    width: 135px;
-    height: 100px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(70%); /* scurisce l'immagine */
+  }
+
+  .path-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .path-description {
+    color: white;
+    font-size: 13px;
+    font-family: "MedievalSharp", cursive;
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    line-height: 1.2;
+    overflow: hidden;
+    display: -webkit-box;
+  }
+
+  .paths {
+    margin-top: 540px;
+  }
+
+  .player-title {
+    position: absolute;
+    font-size: 18px;
+    top: 124px;
+    left: 315px;
+    border: 2px solid #cfbb08;
+    padding: 8px;
     border-radius: 12px;
   }
 
-  .paths-action {
-    background-color: #cfcc08;
-    color: black;
-    border: none;
+  .player-name {
+    position: absolute;
+    margin-top: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 18px;
+    top: 155px;
+    left: 335px;
+  }
+
+  .player-weapon {
+    position: absolute;
+    font-size: 18px;
+    top: 105px;
+    left: 470px;
+    border: 2px solid #cfbb08;
+    padding: 8px;
     border-radius: 12px;
+  }
+
+  .img-weapons {
+    width: 90px;
+    border-radius: 12px;
+    position: absolute;
+    top: 155px;
+    left: 470px;
+    display: none;
+  }
+
+  .margin-card {
+    margin-top: 60px;
+  }
+
+  .paths-grid {
+    display: grid;
+  }
+
+  .path-card {
+    width: 100%;
+    max-width: 250px; /* o 150-200px a seconda di quanto vuoi stretto */
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 375px) {
+  .floor-title {
+    position: absolute;
+    top: 65px;
+    left: 25px;
+    display: none;
+  }
+
+  .subtitle {
+    position: absolute;
+    top: 135px;
+  }
+
+  .main-image {
+    position: absolute;
+    top: 205px;
+    width: 355px;
+    height: 280px;
+    margin-top: 15px;
+  }
+
+  .description {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    padding: 10px;
+    top: 500px;
+    font-size: 18px;
+  }
+
+  .img-paths {
+    width: 113px;
+    height: 100px;
+    border-radius: 12px;
+    display: block;
+  }
+
+  .paths-action {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+    border: 1px solid #cfcc08;
+    border-radius: 12px; /* angoli solo in basso */
     cursor: pointer;
     font-family: "MedievalSharp", cursive !important;
-    font-size: 15px;
-    width: 135px;
-    height: 105px;
+    font-size: 14px;
+    width: 113px;
+    min-height: 60px;
     text-align: center;
+    padding: 0px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .paths {
@@ -468,7 +650,13 @@ body {
     display: none;
   }
 
+  .flex-path {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
   .margin-card {
-    margin-top: 100px;
+    margin-top: 50px;
   }
 }
