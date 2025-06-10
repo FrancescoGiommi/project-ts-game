@@ -16,7 +16,11 @@ export default function PathModal({ options, onClose }) {
                 Chiudi
               </button>
               {options.map((option) => (
-                <Link to={`/floor/${option.id}`} key={option.id}>
+                <Link
+                  to={`/floor/${option.id}`}
+                  key={option.id}
+                  onClick={onClose}
+                >
                   <CardPath path={option} />
                 </Link>
               ))}

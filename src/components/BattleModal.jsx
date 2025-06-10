@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function BattleModal({
   result,
@@ -14,6 +15,18 @@ export default function BattleModal({
     // Vai alla home
     navigate("/floor");
   };
+
+  useEffect(() => {
+    return () => {
+      // Cleanup su smontaggio
+      document.body.classList.remove("modal-open");
+      document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
+      const backdrop = document.querySelector(".modal-backdrop");
+      if (backdrop) backdrop.remove();
+    };
+  }, []);
+
   return (
     <div
       className="modal fade"

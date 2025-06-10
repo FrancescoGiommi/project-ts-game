@@ -10,6 +10,24 @@ export default function FloorPage() {
   const playerName = localStorage.getItem("playerName");
 
   const [mobileModal, setMobileModal] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [isMobile]);
 
   // Raccogli tutti gli ID usati come "next"
   const allId = paths.map((obj) => obj.options.map((opt) => opt.id)).flat();
@@ -30,14 +48,6 @@ export default function FloorPage() {
             <div className="d-flex flex-column align-items-center justify-content-center text-center">
               <h2 className="fs-1 subtitle">{startPath?.title}</h2>
 
-              {/* Dettagli del giocatore (opzionale) */}
-              {/* 
-              <div className="player-detail">
-                <h3 className="player-title">Giocatore</h3>
-                <p className="player-name">{playerName}</p>
-              </div> 
-              */}
-
               <img className="main-image" src={startPath?.image} alt="" />
 
               <div>
@@ -51,25 +61,38 @@ export default function FloorPage() {
                 Davanti a te si aprono tre sentieri, quale scegli?
               </p>
             </div>
-            {startPath.options.length > 2 && (
-              <div>
-                <button
-                  className="btn btn-primary btn-paths"
-                  onClick={() => setMobileModal(true)}
-                  aria-label="Mostra percorsi"
-                >
-                  Scegli un percorso
-                </button>
+            {isMobile ? (
+              <>
+                <div>
+                  <button
+                    className="btn btn-primary btn-paths fs-1"
+                    onClick={() => setMobileModal(true)}
+                    aria-label="Mostra percorsi"
+                  >
+                    Scegli un percorso
+                  </button>
+                </div>
+                <div className="paths">
+                  {mobileModal && (
+                    <PathModal
+                      options={startPath.options}
+                      onClose={() => setMobileModal(false)}
+                      isModal={true}
+                    />
+                  )}
+                </div>
+              </>
+            ) : (
+              <div className="paths">
+                <div className="d-flex flex-row justify-content-around">
+                  {startPath.options.map((option) => (
+                    <Link to={`/floor/${option.id}`} key={option.id}>
+                      <CardPath path={option} />
+                    </Link>
+                  ))}
+                </div>
               </div>
             )}
-            <div className="paths">
-              {mobileModal && (
-                <PathModal
-                  options={startPath.options}
-                  onClose={() => setMobileModal(false)}
-                />
-              )}
-            </div>
           </div>
         </div>
       </div>
