@@ -65,7 +65,7 @@ export default function FloorPage() {
               <>
                 <div>
                   <button
-                    className="btn btn-primary btn-paths fs-1"
+                    className="btn btn-primary btn-paths"
                     onClick={() => setMobileModal(true)}
                     aria-label="Mostra percorsi"
                   >

@@ -99,8 +99,8 @@ body {
 
 .floor-title {
   position: absolute;
-  top: 200px;
-  right: 420px;
+  top: 50px;
+  left: 500px;
 }
 
 .description {
@@ -118,7 +118,7 @@ body {
 }
 
 .paths {
-  margin-top: 850px;
+  margin-top: 1000px;
 }
 
 .img-weapons {
@@ -136,20 +136,10 @@ body {
 }
 
 .death-button {
-  background-color: #860808;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  font-family: "MedievalSharp", cursive !important;
-  font-size: 1.2rem;
-  opacity: 0;
-  transform: scale(0.9);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  animation: fadeInScale 0.5s ease forwards;
-  /* animation-delay: 3s; */
-  position: absolute;
-  top: 760px;
+  display: block !important;
+  opacity: 1 !important;
+  z-index: 9999 !important;
+  position: relative !important;
 }
 
 /* L'animazione */
@@ -339,6 +329,31 @@ body {
   cursor: pointer;
 }
 
+.fate-text {
+}
+
+@media (max-width: 768px) {
+  .subtitle {
+    position: absolute;
+    top: 120px;
+  }
+
+  .floor-title {
+    position: absolute;
+    top: 65px;
+    right: 350px;
+    display: none;
+  }
+
+  .main-image {
+    position: absolute;
+    top: 185px;
+    width: 700px;
+    height: 450px;
+    border-radius: 12px;
+  }
+}
+
 /* Small device */
 @media (max-width: 576px) {
   .floor-title {
@@ -350,12 +365,12 @@ body {
 
   .subtitle {
     position: absolute;
-    top: 105px;
+    top: 150px;
   }
 
   .main-image {
     position: absolute;
-    top: 180px;
+    top: 220px;
     width: 530px;
     height: 365px;
   }
@@ -365,8 +380,8 @@ body {
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 12px;
     padding: 10px;
-    top: 560px;
-    font-size: 18px;
+    top: 620px;
+    font-size: 16px;
   }
 
   .img-paths {
@@ -439,9 +454,14 @@ body {
 
   .btn-paths {
     position: absolute; /* o fixed */
-    top: 85%;
+    top: 76%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+
+  .death-button {
+    position: absolute;
+    bottom: 200px;
   }
 }
 
@@ -462,8 +482,8 @@ body {
   .main-image {
     position: absolute;
     top: 125px;
-    width: 415px;
-    height: 300px;
+    width: 375px;
+    height: 250px;
     margin-top: 25px;
   }
 
@@ -472,7 +492,7 @@ body {
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 12px;
     padding: 10px;
-    top: 445px;
+    top: 390px;
     font-size: 18px;
     margin-top: 20px;
   }
@@ -569,6 +589,14 @@ body {
     width: 100%;
     max-width: 250px; /* o 150-200px a seconda di quanto vuoi stretto */
     margin: 0 auto;
+  }
+
+  .death-button {
+    display: block !important;
+    opacity: 1 !important;
+    z-index: 9999 !important;
+    position: relative !important;
+    top: 840px;
   }
 }
 
