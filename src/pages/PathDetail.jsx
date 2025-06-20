@@ -38,20 +38,24 @@ export default function PathDetail({ path }) {
   const [showButtons, setShowButtons] = useState(false);
   const [isDead, setIsDead] = useState(false);
 
+  const [desktopClicked, setDesktopClicked] = useState(false);
+  const [loadingDesktop, setLoadingDesktop] = useState(false);
+  const [desktopPathRevealed, setDesktopPathRevealed] = useState(false);
+
+  const [mobileClicked, setMobileClicked] = useState(false);
+  const [loadingMobile, setLoadingMobile] = useState(false);
+
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const playerName = localStorage.getItem("playerName");
 
   const pathData = paths.find((path) => path.id === id);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      const dead = Math.random() * 100 < pathData.deathChance;
-      setIsDead(dead);
+    if (pathData) {
+      setIsDead(false);
       setShowButtons(true);
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, [pathData.deathChance]);
+    }
+  }, [pathData]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -116,6 +120,68 @@ export default function PathDetail({ path }) {
     setBattleResult(result);
   };
 
+  const renderDesktopButton = () => {
+    if (
+      isMobile ||
+      pathData.isBattle ||
+      pathData.deathChance === 0 ||
+      desktopClicked
+    ) {
+      return null;
+    }
+
+    return (
+      <div className="paths">
+        <div className="d-flex justify-content-center mt-4">
+          {loadingDesktop ? (
+            <div className="text-center mt-3 traversing-text text-message">
+              {pathData.isFate}
+              <span className="dot-animation">.</span>
+            </div>
+          ) : (
+            <button className="btn btn-danger" onClick={handleDesktopContinue}>
+              Prosegui
+            </button>
+          )}
+        </div>
+      </div>
+    );
+  };
+
+  const handleDesktopContinue = () => {
+    setLoadingDesktop(true);
+
+    setTimeout(() => {
+      const isDeadNow = Math.random() * 100 < pathData.deathChance;
+      setIsDead(isDeadNow);
+      setDesktopClicked(true); // nasconde il bottone dopo il click
+      setLoadingDesktop(false);
+
+      if (isDeadNow) {
+        setRestarModal(true); // mostra modale morte
+      } else {
+        setDesktopPathRevealed(true); // mostra i percorsi
+      }
+    }, 3000);
+  };
+
+  const handleMobileContinue = () => {
+    setLoadingMobile(true);
+    setMobileClicked(true); // Nasconde il bottone dopo il click
+
+    setTimeout(() => {
+      const isDeadNow = Math.random() * 100 < pathData.deathChance;
+      setIsDead(isDeadNow);
+      setLoadingMobile(false);
+
+      if (isDeadNow) {
+        setRestarModal(true);
+      } else {
+        setMobileModal(true); // mostra modale dei percorsi
+      }
+    }, 3000);
+  };
+
   /* Se non c'è il percorso mostro un messaggio */
   if (!pathData) {
     return <h1>Percorso non trovato</h1>;
@@ -145,25 +211,25 @@ export default function PathDetail({ path }) {
               <>
                 {!pathData.isBattle && showButtons && (
                   <>
-                    {isDead ? (
-                      <div className="d-flex justify-content-center mt-4">
-                        <button
-                          className="btn btn-danger death-button fs-1"
-                          onClick={() => setRestarModal(true)}
-                        >
-                          Sei Morto{" "}
-                          <i className="fa-solid fa-skull-crossbones"></i>
-                        </button>
+                    {pathData.deathChance > 0 && !mobileClicked && (
+                      <div className="paths">
+                        <div className="d-flex justify-content-center mt-4">
+                          <button
+                            className="btn btn-danger"
+                            onClick={handleMobileContinue}
+                          >
+                            Prosegui
+                          </button>
+                        </div>
                       </div>
-                    ) : (
-                      <div>
-                        <button
-                          className="btn btn-primary btn-paths fs-1"
-                          onClick={() => setMobileModal(true)}
-                          aria-label="Mostra percorsi"
-                        >
-                          Scegli un percorso
-                        </button>
+                    )}
+
+                    {loadingMobile && (
+                      <div className="paths">
+                        <div className="text-center mt-3 traversing-text text-message">
+                          {pathData.isFate}
+                          <span className="dot-animation">.</span>
+                        </div>
                       </div>
                     )}
                   </>
@@ -172,7 +238,7 @@ export default function PathDetail({ path }) {
                 {pathData.deathChance === 0 && (
                   <div>
                     <button
-                      className="btn btn-primary btn-paths fs-1"
+                      className="btn btn-primary btn-paths"
                       onClick={() => setMobileModal(true)}
                       aria-label="Mostra percorsi"
                     >
@@ -180,6 +246,7 @@ export default function PathDetail({ path }) {
                     </button>
                   </div>
                 )}
+
                 <div className="paths">
                   {/* Modale per scegliere il percorso */}
                   {mobileModal && (
@@ -193,49 +260,30 @@ export default function PathDetail({ path }) {
               </>
             ) : (
               <>
-                <div className="paths">
-                  <div className="d-flex flex-row justify-content-around">
-                    {pathData.options.map((path, index) => (
-                      <Link to={`/floor/${path.id}`} key={index}>
-                        <CardPath
-                          path={{
-                            description: path.description,
-                            image: path.image,
-                          }}
-                        />
-                      </Link>
-                    ))}
-                  </div>
-                </div>
                 {/* Versione Desktop */}
-                <div className="paths">
-                  {/* Mostra il bottone se si muore */}
-                  {showButtons && !pathData.isBattle && (
-                    <>
-                      {isDead ? (
-                        <div className="d-flex justify-content-center mt-4">
-                          <button
-                            className="btn btn-danger death-button fs-1"
-                            onClick={() => setRestarModal(true)}
-                          >
-                            Sei Morto{" "}
-                            <i className="fa-solid fa-skull-crossbones"></i>
-                          </button>
+                {!isMobile && !pathData.isBattle && (
+                  <>
+                    {renderDesktopButton()}
+
+                    {(pathData.deathChance === 0 ||
+                      (desktopPathRevealed && !isDead)) && (
+                      <div className="paths">
+                        <div className="mt-4 d-flex justify-content-around">
+                          {pathData.options.map((path, index) => (
+                            <Link to={`/floor/${path.id}`} key={index}>
+                              <CardPath
+                                path={{
+                                  description: path.description,
+                                  image: path.image,
+                                }}
+                              />
+                            </Link>
+                          ))}
                         </div>
-                      ) : (
-                        <div>
-                          <button
-                            className="btn btn-primary btn-paths fs-1"
-                            onClick={() => setMobileModal(true)}
-                            aria-label="Mostra percorsi"
-                          >
-                            Scegli un percorso
-                          </button>
-                        </div>
-                      )}
-                    </>
-                  )}
-                </div>
+                      </div>
+                    )}
+                  </>
+                )}
               </>
             )}
 
@@ -247,7 +295,7 @@ export default function PathDetail({ path }) {
             <div className="d-flex justify-content-center">
               <button
                 type="button"
-                className="btn btn-primary fs-1"
+                className="btn btn-primary"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
                 onClick={() => setBattleModal(true)}
