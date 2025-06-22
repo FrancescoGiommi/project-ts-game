@@ -1,4 +1,4 @@
-const weapons = [
+const enemies = [
   {
     id: 1,
     name: "Goblin",
@@ -15,4 +15,4 @@ const weapons = [
   },
 ];
 
-export default weapons;
+export default enemies;

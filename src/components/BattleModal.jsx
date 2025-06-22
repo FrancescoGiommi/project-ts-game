@@ -59,8 +59,8 @@ export default function BattleModal({
 
                   {/* Immagine player */}
                   <img
-                    className="player-img mb-3"
-                    src="/img/player_img.jpg"
+                    className="player-img-battle mb-3"
+                    src={localStorage.getItem("playerImage")}
                     alt="player image"
                   />
 

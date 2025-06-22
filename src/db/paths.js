@@ -229,7 +229,7 @@ const paths = [
     id: "node_4",
     floor: "Primo piano",
     title: "Attraversa il ponte",
-    description: "Inizi ad attraversare il ponte ma il primo asse di legno si spezza, afferri le due corse che lo sorreggono e prosegui lentamente, consapevole che potresti morire...",
+    description: "Inizi ad attraversare il ponte ma il primo asse di legno si spezza, afferri le due corde che lo sorreggono e prosegui lentamente, consapevole che potresti morire...",
     image: "/img/ponte_rotto.jpg",
     deathChance: 25,
     isBattle: false,

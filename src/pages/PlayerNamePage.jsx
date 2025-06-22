@@ -10,7 +10,7 @@ export default function PlayerNamePage() {
     const playerName = playerNameRef.current.value.trim();
     if (playerName) {
       localStorage.setItem("playerName", playerName);
-      navigate("/floor");
+      navigate("/playerImg");
     }
   };
   return (

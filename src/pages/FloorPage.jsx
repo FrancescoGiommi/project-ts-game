@@ -50,10 +50,10 @@ export default function FloorPage() {
 
               <img className="main-image" src={startPath?.image} alt="" />
 
-              <div>
+              {/* <div>
                 <h3 className="player-weapon">Arma</h3>
                 <img className="img-weapons" src={weapons[0].image} alt="" />
-              </div>
+              </div> */}
 
               <p className="description">
                 Benvenuto! La tua arma è uno {weapons[0].name}.
@@ -63,6 +63,11 @@ export default function FloorPage() {
             </div>
             {isMobile ? (
               <>
+                {/* Inventario versione mobile */}
+                <button className="btn btn-primary inventory-btn rounded-pill">
+                  Inventario
+                </button>
+
                 <div>
                   <button
                     className="btn btn-primary btn-paths"
@@ -83,15 +88,33 @@ export default function FloorPage() {
                 </div>
               </>
             ) : (
-              <div className="paths">
-                <div className="d-flex flex-row justify-content-around">
-                  {startPath.options.map((option) => (
-                    <Link to={`/floor/${option.id}`} key={option.id}>
-                      <CardPath path={option} />
-                    </Link>
-                  ))}
+              <>
+                {/* Inventario versione desktop */}
+                <div className="inventory-window">
+                  <div className="d-flex flex-row justify-content-around align-items-center">
+                    <img
+                      className="player-img"
+                      src={localStorage.getItem("playerImage")}
+                      alt=""
+                    />
+                    <div className="ms-3">
+                      <h2>{localStorage.getItem("playerName")}</h2>
+                      <button className="btn btn-primary rounded-pill">
+                        Apri l'inventario
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </div>
+                <div className="paths">
+                  <div className="d-flex flex-row justify-content-around">
+                    {startPath.options.map((option) => (
+                      <Link to={`/floor/${option.id}`} key={option.id}>
+                        <CardPath path={option} />
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </>
             )}
           </div>
         </div>

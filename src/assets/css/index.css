@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "MedievalSharp", cursive !important;
   font-weight: 400;
@@ -285,6 +289,17 @@ body {
   transform: translate(-50%, -50%);
 }
 
+.btn-battle {
+  position: absolute;
+  top: 500px;
+}
+
+.player-img-battle {
+  width: 150px;
+  height: 150px;
+  border-radius: 12px;
+}
+
 /* Css modale percorsi */
 .custom-modal-overlay {
   position: fixed;
@@ -362,6 +377,55 @@ body {
   100% {
     content: "...";
   }
+}
+
+.player-content {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-image: url("/img/backgroundTower.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.inventory-window {
+  position: absolute;
+  top: 100px;
+  left: 75%;
+  transform: translateX(-50%);
+  width: 375px;
+  height: 200px;
+  background-color: rgba(231, 221, 221, 0.8);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.title-img {
+  margin-bottom: 100px;
+  color: white;
+}
+
+.player-img {
+  width: 150px;
+  cursor: pointer;
+  border-radius: 75px;
+  transition: transform 0.3s;
+}
+
+.player-img:hover {
+  transform: scale(1.05);
+}
+
+.image-wrapper.selected {
+  border: 2px solid gold;
+  padding: 4px;
+  border-radius: 10px;
 }
 
 @media (max-width: 768px) {
@@ -494,6 +558,19 @@ body {
   .death-button {
     position: absolute;
     bottom: 200px;
+  }
+
+  .player-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+  }
+
+  .inventory-btn {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    border-radius: 12px;
   }
 }
 

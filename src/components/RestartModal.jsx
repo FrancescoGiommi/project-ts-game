@@ -17,10 +17,16 @@ export default function RestartModal({ onClose }) {
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title">Sei Morto!</h5>
+              <h5 className="modal-title text-center text-danger">
+                Sei Morto!
+              </h5>
             </div>
             <div className="modal-body">
-              <p className="fs-3">Ricomincia da capo</p>
+              <p className="fs-3">Ricomincia da capo.</p>
+              <p className="fs-5">
+                Ricominciando perdi tutti i progressi e gli oggetti raccolti, ad
+                eccezione dell'arma.
+              </p>
             </div>
             <div className="modal-footer">
               <button

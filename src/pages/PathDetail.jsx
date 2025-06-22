@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import paths from "../db/paths";
-import weapons from "../db/weapons";
 import CardPath from "../components/CardPath";
 import RestartModal from "../components/RestartModal";
 import BattleModal from "../components/BattleModal";
@@ -199,16 +198,20 @@ export default function PathDetail({ path }) {
 
               <img className="main-image" src={pathData.image} alt="" />
 
-              <div>
+              {/* <div>
                 <h3 className="player-weapon">Arma</h3>
                 <img className="img-weapons" src={weapons[0].image} alt="" />
-              </div>
+              </div> */}
 
               <p className="description">{pathData.description}</p>
             </div>
             {/* Versione Mobile */}
             {isMobile ? (
               <>
+                {/* Inventario versione mobile */}
+                <button className="btn btn-primary inventory-btn rounded-pill">
+                  Inventario
+                </button>
                 {!pathData.isBattle && showButtons && (
                   <>
                     {pathData.deathChance > 0 && !mobileClicked && (
@@ -263,6 +266,21 @@ export default function PathDetail({ path }) {
                 {/* Versione Desktop */}
                 {!isMobile && !pathData.isBattle && (
                   <>
+                    <div className="inventory-window">
+                      <div className="d-flex flex-row justify-content-around align-items-center">
+                        <img
+                          className="player-img"
+                          src={localStorage.getItem("playerImage")}
+                          alt=""
+                        />
+                        <div className="ms-3">
+                          <h2>{localStorage.getItem("playerName")}</h2>
+                          <button className="btn btn-primary rounded-pill">
+                            Apri l'inventario
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                     {renderDesktopButton()}
 
                     {(pathData.deathChance === 0 ||
@@ -292,10 +310,10 @@ export default function PathDetail({ path }) {
             )}
           </div>
           {pathData.isBattle && (
-            <div className="d-flex justify-content-center">
+            <div className="d-flex justify-content-center btn-container">
               <button
                 type="button"
-                className="btn btn-primary"
+                className="btn btn-primary btn-paths "
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
                 onClick={() => setBattleModal(true)}
