@@ -480,6 +480,66 @@ body {
   border-radius: 12px;
 }
 
+.equipment-container {
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 12px;
+  width: 849px;
+  height: 260px;
+
+  gap: 20px;
+  background-color: #f8f8f8;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.weapons-container,
+.items-container {
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 12px;
+  width: 400px;
+  height: 260px;
+
+  gap: 20px;
+  background-color: #f8f8f8;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.inventory-slot {
+  width: 100px;
+  height: 100px;
+  background-color: #dcdcdc;
+  border: 2px dashed #aaa;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.inventory-slot:hover {
+  background-color: #e3e3e3;
+}
+
+.slot-image {
+  max-width: 80px;
+  max-height: 80px;
+  object-fit: contain;
+}
+.empty-slot-text {
+  font-size: 0.8rem;
+  color: #666;
+}
+
 @media (max-width: 768px) {
   .subtitle {
     position: absolute;

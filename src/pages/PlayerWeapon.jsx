@@ -9,7 +9,8 @@ export default function PlayerWeapon() {
 
   const handleSelect = (weapon) => {
     setSelectedWeapon(weapon);
-    localStorage.setItem("playerWeapon", weapon); // Salvo per usarlo nel gioco
+    localStorage.setItem("playerWeapon", JSON.stringify(weapon));
+    // Salvo per usarlo nel gioco
     navigate("/floor");
   };
   return (
@@ -26,7 +27,7 @@ export default function PlayerWeapon() {
                     className={`image-wrapper col-4 col-md-3 col-lg-4 g-2 ${
                       selectedWeapon === img.image ? "selected" : ""
                     }`}
-                    onClick={() => handleSelect(img.image)}
+                    onClick={() => handleSelect(img)}
                   >
                     <img
                       className="weapon-img"
@@ -48,7 +49,7 @@ export default function PlayerWeapon() {
                   className={`image-wrapper ${
                     selectedWeapon === img.image ? "selected" : ""
                   }`}
-                  onClick={() => handleSelect(img.image)}
+                  onClick={() => handleSelect(img)}
                 >
                   <img
                     className="weapon-img"
