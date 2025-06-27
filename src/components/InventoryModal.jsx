@@ -1,10 +1,9 @@
 export default function InventoryModal({ onClose, playerName, playerImage }) {
   const equipmentSlots = Array(12).fill(null);
-  const weaponSlots = Array(15).fill(null); // puoi espandere
-  const itemSlots = Array(15).fill(null);
+  const itemSlots = Array(12).fill(null);
   const savedWeapon = JSON.parse(localStorage.getItem("playerWeapon"));
   if (savedWeapon) {
-    weaponSlots[0] = savedWeapon;
+    equipmentSlots[0] = savedWeapon;
   }
   return (
     <>
@@ -48,43 +47,23 @@ export default function InventoryModal({ onClose, playerName, playerImage }) {
                 ))}
               </div>
             </div>
-            <div className="d-flex flex-row justify-content-around mt-4 gap-5">
-              <div>
-                <h3>Armi</h3>
-                <div className="weapons-container">
-                  {weaponSlots.map((slot, index) => (
-                    <div key={index} className="inventory-slot">
-                      {/* slot vuoto, in futuro potrai mostrare un'arma qui */}
-                      {slot ? (
-                        <img
-                          src={slot.image}
-                          alt={slot.name}
-                          className="slot-image"
-                        />
-                      ) : (
-                        <span className="empty-slot-text">Vuoto</span>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <h3>Oggetti</h3>
-                <div className="items-container">
-                  {itemSlots.map((slot, index) => (
-                    <div key={index} className="inventory-slot">
-                      {slot ? (
-                        <img
-                          src={slot.image}
-                          alt={slot.name}
-                          className="slot-image"
-                        />
-                      ) : (
-                        <span className="empty-slot-text">Vuoto</span>
-                      )}
-                    </div>
-                  ))}
-                </div>
+
+            <div className="mt-3">
+              <h3>Oggetti</h3>
+              <div className="items-container">
+                {itemSlots.map((slot, index) => (
+                  <div key={index} className="inventory-slot">
+                    {slot ? (
+                      <img
+                        src={slot.image}
+                        alt={slot.name}
+                        className="slot-image"
+                      />
+                    ) : (
+                      <span className="empty-slot-text">Vuoto</span>
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
           </div>

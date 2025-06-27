@@ -480,28 +480,12 @@ body {
   border-radius: 12px;
 }
 
-.equipment-container {
-  border: 1px solid black;
-  padding: 20px;
-  border-radius: 12px;
-  width: 849px;
-  height: 260px;
-
-  gap: 20px;
-  background-color: #f8f8f8;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.weapons-container,
+.equipment-container,
 .items-container {
   border: 1px solid black;
   padding: 20px;
   border-radius: 12px;
-  width: 400px;
+  width: 849px;
   height: 260px;
 
   gap: 20px;
@@ -691,8 +675,8 @@ body {
   }
 
   .inventory-window-modal {
-    width: 500px;
-    height: 600px;
+    width: 350px;
+    height: 650px;
     background-color: rgba(231, 221, 221, 0.8);
     border-radius: 12px;
     padding: 20px;
@@ -704,6 +688,23 @@ body {
     transform: translate(-50%, -50%);
 
     z-index: 100;
+  }
+
+  .equipment-container,
+  .items-container {
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 12px;
+    width: 300px;
+    height: 141px;
+
+    gap: 20px;
+    background-color: #f8f8f8;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
 
