@@ -30,10 +30,10 @@ const paths = [
     floor: "Primo piano",
     title: "Prega la dea",
     description: "Ti inchini davanti alla statua e inizi a pregare, dopo qualche secondo gli occhi della dea si illuminano, la dea è grata per la tua preghiera e ti da la sua benedizione. Guadagni l'Abilità Fendente Divino! La tua arma ora è a + 10",
-    image: "/img/spada_divina.jpg",
+    image: "/weapon_img/spada_divina.jpg",
     deathChance: 0,
     isBattle: false,
-    enemyId: "",
+    enemyId: "None",
     options: [
       {
         id: "node_15",
@@ -45,6 +45,7 @@ const paths = [
     posX: 450.0,
     posY: 240.0,
     isFate: "example",
+    currencyReward: 0,
   },
   {
     id: "node_12",

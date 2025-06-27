@@ -3,7 +3,7 @@ export default function CardPath({ path }) {
     <>
       <div className="d-flex flex-column margin-card">
         <img className="img-paths mb-3" src={path.image} alt="" />
-        <p className="paths-action">{path.description}</p>
+        <p className="paths-action text-center">{path.description}</p>
       </div>
     </>
   );

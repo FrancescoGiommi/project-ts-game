@@ -10,7 +10,7 @@ export default function PlayerImage() {
   const handleSelect = (image) => {
     setSelectedImg(image);
     localStorage.setItem("playerImage", image); // Salvo per usarlo nel gioco
-    navigate("/floor");
+    navigate("/playerWeapon");
   };
 
   return (

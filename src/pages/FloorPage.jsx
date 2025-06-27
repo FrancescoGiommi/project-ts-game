@@ -4,11 +4,12 @@ import weapons from "../db/weapons.js";
 import CardPath from "../components/CardPath.jsx";
 import { Link } from "react-router-dom";
 import PathModal from "../components/PathModal.jsx";
+import InventoryModal from "../components/InventoryModal.jsx";
 import { useState, useEffect } from "react";
 
 export default function FloorPage() {
   const playerName = localStorage.getItem("playerName");
-
+  const [inventoryModal, setInventoryModal] = useState(false);
   const [mobileModal, setMobileModal] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
@@ -29,12 +30,6 @@ export default function FloorPage() {
     }
   }, [isMobile]);
 
-  // Raccogli tutti gli ID usati come "next"
-  const allId = paths.map((obj) => obj.options.map((opt) => opt.id)).flat();
-
-  // Trova i percorsi iniziali (non usati come "next")
-  const rootPaths = paths.filter((p) => !allId.includes(p.id));
-
   // Trova il nodo con id === "start"
   const startPath = paths.find((p) => p.id === "start");
 
@@ -50,11 +45,6 @@ export default function FloorPage() {
 
               <img className="main-image" src={startPath?.image} alt="" />
 
-              {/* <div>
-                <h3 className="player-weapon">Arma</h3>
-                <img className="img-weapons" src={weapons[0].image} alt="" />
-              </div> */}
-
               <p className="description">
                 Benvenuto! La tua arma è uno {weapons[0].name}.
                 <br />
@@ -64,10 +54,20 @@ export default function FloorPage() {
             {isMobile ? (
               <>
                 {/* Inventario versione mobile */}
-                <button className="btn btn-primary inventory-btn rounded-pill">
+                <button
+                  className="btn btn-primary inventory-btn"
+                  onClick={() => setInventoryModal(true)}
+                >
                   Inventario
                 </button>
 
+                {inventoryModal && (
+                  <InventoryModal
+                    playerName={localStorage.getItem("playerName")}
+                    playerImage={localStorage.getItem("playerImage")}
+                    onClose={() => setInventoryModal(false)}
+                  />
+                )}
                 <div>
                   <button
                     className="btn btn-primary btn-paths"
@@ -99,12 +99,24 @@ export default function FloorPage() {
                     />
                     <div className="ms-3">
                       <h2>{localStorage.getItem("playerName")}</h2>
-                      <button className="btn btn-primary rounded-pill">
+                      <button
+                        className="btn btn-primary inventory-btn"
+                        onClick={() => setInventoryModal(true)}
+                      >
                         Apri l'inventario
                       </button>
                     </div>
                   </div>
+
+                  {inventoryModal && (
+                    <InventoryModal
+                      playerName={localStorage.getItem("playerName")}
+                      playerImage={localStorage.getItem("playerImage")}
+                      onClose={() => setInventoryModal(false)}
+                    />
+                  )}
                 </div>
+
                 <div className="paths">
                   <div className="d-flex flex-row justify-content-around">
                     {startPath.options.map((option) => (

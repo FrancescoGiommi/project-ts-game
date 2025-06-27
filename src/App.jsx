@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import PlayerNamePage from "./pages/PlayerNamePage";
 import PlayerImage from "./pages/PlayerImage";
+import PlayerWeapon from "./pages/PlayerWeapon";
 import FloorPage from "./pages/FloorPage";
 import PathDetail from "./pages/PathDetail";
 
@@ -19,6 +20,7 @@ function App() {
           <Route element={<HomePage />} path="/" />
           <Route element={<PlayerNamePage />} path="/playerName" />
           <Route element={<PlayerImage />} path="/playerImg" />
+          <Route element={<PlayerWeapon />} path="/playerWeapon" />
           <Route element={<FloorPage />} path="/floor" />
           <Route element={<PathDetail />} path="/floor/:id" />
         </Routes>

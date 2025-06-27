@@ -5,6 +5,7 @@ import CardPath from "../components/CardPath";
 import RestartModal from "../components/RestartModal";
 import BattleModal from "../components/BattleModal";
 import PathModal from "../components/PathModal";
+import InventoryModal from "../components/InventoryModal";
 
 export default function PathDetail({ path }) {
   /* Prendo l'id dall'URL con useParams */
@@ -43,6 +44,7 @@ export default function PathDetail({ path }) {
 
   const [mobileClicked, setMobileClicked] = useState(false);
   const [loadingMobile, setLoadingMobile] = useState(false);
+  const [inventoryModal, setInventoryModal] = useState(false);
 
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const playerName = localStorage.getItem("playerName");
@@ -198,20 +200,25 @@ export default function PathDetail({ path }) {
 
               <img className="main-image" src={pathData.image} alt="" />
 
-              {/* <div>
-                <h3 className="player-weapon">Arma</h3>
-                <img className="img-weapons" src={weapons[0].image} alt="" />
-              </div> */}
-
               <p className="description">{pathData.description}</p>
             </div>
             {/* Versione Mobile */}
             {isMobile ? (
               <>
                 {/* Inventario versione mobile */}
-                <button className="btn btn-primary inventory-btn rounded-pill">
+                <button
+                  className="btn btn-primary inventory-btn"
+                  onClick={() => setInventoryModal(true)}
+                >
                   Inventario
                 </button>
+                {inventoryModal && (
+                  <InventoryModal
+                    playerName={localStorage.getItem("playerName")}
+                    playerImage={localStorage.getItem("playerImage")}
+                    onClose={() => setInventoryModal(false)}
+                  />
+                )}
                 {!pathData.isBattle && showButtons && (
                   <>
                     {pathData.deathChance > 0 && !mobileClicked && (
@@ -275,12 +282,22 @@ export default function PathDetail({ path }) {
                         />
                         <div className="ms-3">
                           <h2>{localStorage.getItem("playerName")}</h2>
-                          <button className="btn btn-primary rounded-pill">
+                          <button
+                            className="btn btn-primary"
+                            onClick={() => setInventoryModal(true)}
+                          >
                             Apri l'inventario
                           </button>
                         </div>
                       </div>
                     </div>
+                    {inventoryModal && (
+                      <InventoryModal
+                        playerName={localStorage.getItem("playerName")}
+                        playerImage={localStorage.getItem("playerImage")}
+                        onClose={() => setInventoryModal(false)}
+                      />
+                    )}
                     {renderDesktopButton()}
 
                     {(pathData.deathChance === 0 ||

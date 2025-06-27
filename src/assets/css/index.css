@@ -393,28 +393,74 @@ body {
   background-repeat: no-repeat;
 }
 
-.inventory-window {
-  position: absolute;
-  top: 100px;
-  left: 75%;
-  transform: translateX(-50%);
-  width: 375px;
-  height: 200px;
-  background-color: rgba(231, 221, 221, 0.8);
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-}
-
 .title-img {
   margin-bottom: 100px;
   color: white;
 }
 
+.inventory-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100;
+}
+
+/* Posizione e sfondo scuro modale */
+.inventory-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+}
+
+/* Contenitore centrale */
+.inventory-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+}
+
+/* Stile interno (lo stesso di prima) */
+.inventory-window {
+  width: 375px;
+  height: 165px;
+  background-color: rgba(231, 221, 221, 0.8);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 100px;
+  right: 400px;
+}
+
+.inventory-window-modal {
+  width: 1000px;
+  height: 1000px;
+  background-color: rgba(231, 221, 221, 0.8);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+
+  /* Centramento nella finestra */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  z-index: 100; /* assicurati che sia sopra */
+}
+
 .player-img {
-  width: 150px;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
   cursor: pointer;
-  border-radius: 75px;
   transition: transform 0.3s;
 }
 
@@ -426,6 +472,12 @@ body {
   border: 2px solid gold;
   padding: 4px;
   border-radius: 10px;
+}
+
+.weapon-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 12px;
 }
 
 @media (max-width: 768px) {
@@ -566,11 +618,32 @@ body {
     border-radius: 40px;
   }
 
+  .weapon-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 12px;
+  }
   .inventory-btn {
     position: absolute;
     top: 25px;
     right: 30px;
     border-radius: 12px;
+  }
+
+  .inventory-window-modal {
+    width: 500px;
+    height: 600px;
+    background-color: rgba(231, 221, 221, 0.8);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    z-index: 100;
   }
 }
 
