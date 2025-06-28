@@ -5,6 +5,9 @@ export default function InventoryModal({ onClose, playerName, playerImage }) {
   if (savedWeapon) {
     equipmentSlots[0] = savedWeapon;
   }
+
+  const slotsOccupied = (slots) => slots.filter(Boolean).length;
+
   return (
     <>
       <div
@@ -29,7 +32,12 @@ export default function InventoryModal({ onClose, playerName, playerImage }) {
           </div>
           <div className="d-flex flex-column justify-content-around align-items-center">
             <div className="d-flex flex-column justify-content-around mt-5">
-              <h3>Equipaggiamento</h3>
+              <div className="d-flex flex-row justify-content-between align-items-center">
+                <h3>Equipaggiamento</h3>
+                <h4>
+                  {slotsOccupied(equipmentSlots)}/{equipmentSlots.length}
+                </h4>
+              </div>
               <div className="equipment-container">
                 {equipmentSlots.map((slot, index) => (
                   <div key={index} className="inventory-slot">
@@ -49,7 +57,12 @@ export default function InventoryModal({ onClose, playerName, playerImage }) {
             </div>
 
             <div className="mt-3">
-              <h3>Oggetti</h3>
+              <div className="d-flex flex-row justify-content-between align-items-center">
+                <h3>Oggetti</h3>
+                <h4>
+                  {slotsOccupied(itemSlots)}/{itemSlots.length}
+                </h4>
+              </div>
               <div className="items-container">
                 {itemSlots.map((slot, index) => (
                   <div key={index} className="inventory-slot">
